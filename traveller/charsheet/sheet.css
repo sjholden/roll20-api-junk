@@ -1,0 +1,330 @@
+.sheet-tab-content {
+    display: none;
+    
+}
+
+input[type=radio].sheet-tab1.sheet-tab1:checked ~ .sheet-tab-content.sheet-tab1,
+input[type=radio].sheet-tab2.sheet-tab2:checked ~ .sheet-tab-content.sheet-tab2,
+input[type=radio].sheet-tab3.sheet-tab3:checked ~ .sheet-tab-content.sheet-tab3,
+input[type=radio].sheet-tab4.sheet-tab4:checked ~ .sheet-tab-content.sheet-tab4,
+input[type=radio].sheet-tab5.sheet-tab5:checked ~ .sheet-tab-content.sheet-tab5,
+input[type=radio].sheet-tab6.sheet-tab6:checked ~ .sheet-tab-content.sheet-tab6 
+{
+    display: block;
+}
+
+input.sheet-tab1[type=radio],
+input.sheet-tab2[type=radio],
+input.sheet-tab3[type=radio],
+input.sheet-tab4[type=radio],
+input.sheet-tab5[type=radio],
+input.sheet-tab6[type=radio] {
+    //display:none;
+    z-index: 2;
+    width: 134px;
+    height: 54px;
+    position: absolute;
+    opacity: 0;
+}
+    
+input.sheet-tab {
+    width: 110px;
+    line-height: 30px;
+
+    outline: none !important;
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
+
+}
+
+input.sheet-tab1,
+input.sheet-tab1 + span {
+    left: 32px;
+}
+
+input.sheet-tab2,
+input.sheet-tab2 + span {
+    left: 166px;
+}
+
+input.sheet-tab3,
+input.sheet-tab3 + span {
+    left: 300px;
+}
+
+input.sheet-tab4,
+input.sheet-tab4 + span {
+    left: 434px;
+}
+
+input.sheet-tab5,
+input.sheet-tab5 + span {
+    left: 568px;
+}
+
+input.sheet-tab6,
+input.sheet-tab6 + span {
+    left: 702px;
+}
+
+input.sheet-tab[type=radio] + span {
+    width: 110px;
+    content: attr(title);
+    display: inline;
+    line-height: 30px;
+    background: white;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:10px;
+    padding-bottom:10px;
+
+    border: solid 2px red;
+
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: red;
+    font-family:"Trebuchet MS", Helvetica, sans-serif;
+    text-shadow: none;
+    position: absolute;
+
+}
+
+input.sheet-tab1[type=radio],
+input.sheet-tab1[type=radio] + span {
+    width: 110px;
+    position: absolute;
+}
+
+
+input.sheet-tab[type=radio]:checked + span {
+    border: solid 2px red;
+    background: black;
+    line-height: 30px;
+
+    color:red;
+    text-shadow: none;
+    }
+
+input.sheet-tab:not(:first-child)::before {
+    border-left: none;
+}
+
+div.sheet-tab-content {
+    border: 2px solid red;
+    margin: 2px 2px 2px 2px;
+    padding: 5px;
+    background: white;
+}
+
+div.sheet-topbar {
+    border: 2px solid red;
+    margin: 2px 2px 2px -5px;
+    padding: 5px;
+    padding-bottom:-10px;
+}
+
+div.sheet-all-tabs {
+    background: black;
+    border: solid 2px red;
+
+}
+
+
+input.sheet-checklabel {
+    display:none;
+  }
+ 
+input.sheet-checklabel + span
+   {
+       background: #999;
+       height: 16px;
+       width: 16px;
+       display:inline-block;
+       padding: 0 0 0 0px;
+   }
+   
+input.sheet-checklabel:checked + span
+    {
+        background: #0080FF;
+        height: 16px;
+        width: 16px;
+        display:inline-block;
+        padding: 0 0 0 0px;
+    }
+    
+    button[type="roll"]:before {
+    content: ""!important;
+    display: none;
+}
+
+    button[type="roll"] {
+    	-webkit-border-radius: 28;
+		-moz-border-radius: 28;
+		border-radius: 28px;
+		color: #f00;
+		font-size: 20px;
+		background: #fff;
+		padding: 10px 20px 10px 20px;
+		border: solid #f00 2px;
+		text-decoration: none;
+		width: 100%;
+	}
+	button[type="roll"]:hover {
+		background: #000;
+		text-decoration: none;
+	}
+	
+.sheet-table {
+    display:table;
+}
+.sheet-header {
+    display:table-header-group;
+    font-weight:bold;
+}
+.sheet-row {
+    display:table-row;
+}
+.sheet-rowGroup {
+    display:table-row-group;
+}
+.sheet-cell {
+    display:table-cell;
+    width:10%;
+}
+.sheet-header-tab {
+    border: 2px solid red;
+    margin: 2px 2px 2px 2px;
+    padding: 5px;
+    background: black;
+    color: white;
+    font-size: 30px;
+}
+.sheet-header-tab::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+input.sheet-foroutput {
+    border: 0;
+    outline: none;
+    background: black;
+    color: white;
+    font-size: 30px;
+    pointer-events: none;
+
+}
+
+
+.sheet-trained-admin-switch ~ .sheet-trained-admin-hide,
+.sheet-trained-bribery-switch ~ .sheet-trained-bribery-hide,
+.sheet-trained-computer-switch ~ .sheet-trained-computer-hide,
+.sheet-trained-electronics-switch ~ .sheet-trained-electronics-hide,
+.sheet-trained-engineering-switch ~ .sheet-trained-engineering-hide,
+.sheet-trained-forgery-switch ~ .sheet-trained-forgery-hide,
+.sheet-trained-forwardobserver-switch ~ .sheet-trained-forwardobserver-hide,
+.sheet-trained-gambling-switch ~ .sheet-trained-gambling-hide,
+.sheet-trained-gunnery-switch ~ .sheet-trained-gunnery-hide,
+.sheet-trained-jackofalltrades-switch ~ .sheet-trained-jackofalltrades-hide,
+.sheet-trained-leader-switch ~ .sheet-trained-leader-hide,
+.sheet-trained-mechanical-switch ~ .sheet-trained-mechanical-hide,
+.sheet-trained-medical-switch ~ .sheet-trained-medical-hide,
+.sheet-trained-navigation-switch ~ .sheet-trained-navigation-hide,
+.sheet-trained-pilot-switch ~ .sheet-trained-pilot-hide,
+.sheet-trained-shipsboat-switch ~ .sheet-trained-shipsboat-hide,
+.sheet-trained-steward-switch ~ .sheet-trained-steward-hide,
+.sheet-trained-streetwise-switch ~ .sheet-trained-streetwise-hide,
+.sheet-trained-tactics-switch ~ .sheet-trained-tactics-hide,
+.sheet-trained-vaccsuit-switch ~ .sheet-trained-vaccsuit-hide,
+.sheet-trained-brawling-switch ~ .sheet-trained-brawling-hide,
+.sheet-trained-dagger-switch ~ .sheet-trained-dagger-hide,
+.sheet-trained-blade-switch ~ .sheet-trained-blade-hide,
+.sheet-trained-foil-switch ~ .sheet-trained-foil-hide,
+.sheet-trained-cutlass-switch ~ .sheet-trained-cutlass-hide,
+.sheet-trained-sword-switch ~ .sheet-trained-sword-hide,
+.sheet-trained-broadsword-switch ~ .sheet-trained-broadsword-hide,
+.sheet-trained-bayonet-switch ~ .sheet-trained-bayonet-hide,
+.sheet-trained-spear-switch ~ .sheet-trained-spear-hide,
+.sheet-trained-halberd-switch ~ .sheet-trained-halberd-hide,
+.sheet-trained-pike-switch ~ .sheet-trained-pike-hide,
+.sheet-trained-cudgel-switch ~ .sheet-trained-cudgel-hide,
+.sheet-trained-bodypistol-switch ~ .sheet-trained-bodypistol-hide,
+.sheet-trained-automaticpistol-switch ~ .sheet-trained-automaticpistol-hide,
+.sheet-trained-revolver-switch ~ .sheet-trained-revolver-hide,
+.sheet-trained-carbine-switch ~ .sheet-trained-carbine-hide,
+.sheet-trained-rifle-switch ~ .sheet-trained-rifle-hide,
+.sheet-trained-automaticrifle-switch ~ .sheet-trained-automaticrifle-hide,
+.sheet-trained-shotgun-switch ~ .sheet-trained-shotgun-hide,
+.sheet-trained-submachinegun-switch ~ .sheet-trained-submachinegun-hide,
+.sheet-trained-lasercarbine-switch ~ .sheet-trained-lasercarbine-hide,
+.sheet-trained-laserrifle-switch ~ .sheet-trained-laserrifle-hide,
+.sheet-trained-airraft-switch ~ .sheet-trained-airraft-hide,
+.sheet-trained-atv-switch ~ .sheet-trained-atv-hide,
+.sheet-trained-groundcar-switch ~ .sheet-trained-groundcar-hide,
+.sheet-trained-sailboat-switch ~ .sheet-trained-sailboat-hide,
+.sheet-trained-motorboat-switch ~ .sheet-trained-motorboat-hide,
+.sheet-trained-submersible-switch ~ .sheet-trained-submersible-hide,
+.sheet-trained-fixedwingaircraft-switch ~ .sheet-trained-fixedwingaircraft-hide,
+.sheet-trained-helicopter-switch ~ .sheet-trained-helicopter-hide,
+.sheet-trained-hovercraft-switch ~ .sheet-trained-hovercraft-hide,
+.sheet-trained-gravbelt-switch ~ .sheet-trained-gravbelt-hide
+{
+   display: none;
+}
+
+.sheet-trained-admin-switch:checked ~ .sheet-trained-admin-hide,
+.sheet-trained-bribery-switch:checked ~ .sheet-trained-bribery-hide,
+.sheet-trained-computer-switch:checked ~ .sheet-trained-computer-hide,
+.sheet-trained-electronics-switch:checked ~ .sheet-trained-electronics-hide,
+.sheet-trained-engineering-switch:checked ~ .sheet-trained-engineering-hide,
+.sheet-trained-forgery-switch:checked ~ .sheet-trained-forgery-hide,
+.sheet-trained-forwardobserver-switch:checked ~ .sheet-trained-forwardobserver-hide,
+.sheet-trained-gambling-switch:checked ~ .sheet-trained-gambling-hide,
+.sheet-trained-gunnery-switch:checked ~ .sheet-trained-gunnery-hide,
+.sheet-trained-jackofalltrades-switch:checked ~ .sheet-trained-jackofalltrades-hide,
+.sheet-trained-leader-switch:checked ~ .sheet-trained-leader-hide,
+.sheet-trained-mechanical-switch:checked ~ .sheet-trained-mechanical-hide,
+.sheet-trained-medical-switch:checked ~ .sheet-trained-medical-hide,
+.sheet-trained-navigation-switch:checked ~ .sheet-trained-navigation-hide,
+.sheet-trained-pilot-switch:checked ~ .sheet-trained-pilot-hide,
+.sheet-trained-shipsboat-switch:checked ~ .sheet-trained-shipsboat-hide,
+.sheet-trained-steward-switch:checked ~ .sheet-trained-steward-hide,
+.sheet-trained-streetwise-switch:checked ~ .sheet-trained-streetwise-hide,
+.sheet-trained-tactics-switch:checked ~ .sheet-trained-tactics-hide,
+.sheet-trained-vaccsuit-switch:checked ~ .sheet-trained-vaccsuit-hide,
+.sheet-trained-brawling-switch:checked ~ .sheet-trained-brawling-hide,
+.sheet-trained-dagger-switch:checked ~ .sheet-trained-dagger-hide,
+.sheet-trained-blade-switch:checked ~ .sheet-trained-blade-hide,
+.sheet-trained-foil-switch:checked ~ .sheet-trained-foil-hide,
+.sheet-trained-cutlass-switch:checked ~ .sheet-trained-cutlass-hide,
+.sheet-trained-sword-switch:checked ~ .sheet-trained-sword-hide,
+.sheet-trained-broadsword-switch:checked ~ .sheet-trained-broadsword-hide,
+.sheet-trained-bayonet-switch:checked ~ .sheet-trained-bayonet-hide,
+.sheet-trained-spear-switch:checked ~ .sheet-trained-spear-hide,
+.sheet-trained-halberd-switch:checked ~ .sheet-trained-halberd-hide,
+.sheet-trained-pike-switch:checked ~ .sheet-trained-pike-hide,
+.sheet-trained-cudgel-switch:checked ~ .sheet-trained-cudgel-hide,
+.sheet-trained-bodypistol-switch:checked ~ .sheet-trained-bodypistol-hide,
+.sheet-trained-automaticpistol-switch:checked ~ .sheet-trained-automaticpistol-hide,
+.sheet-trained-revolver-switch:checked ~ .sheet-trained-revolver-hide,
+.sheet-trained-carbine-switch:checked ~ .sheet-trained-carbine-hide,
+.sheet-trained-rifle-switch:checked ~ .sheet-trained-rifle-hide,
+.sheet-trained-automaticrifle-switch:checked ~ .sheet-trained-automaticrifle-hide,
+.sheet-trained-shotgun-switch:checked ~ .sheet-trained-shotgun-hide,
+.sheet-trained-submachinegun-switch:checked ~ .sheet-trained-submachinegun-hide,
+.sheet-trained-lasercarbine-switch:checked ~ .sheet-trained-lasercarbine-hide,
+.sheet-trained-laserrifle-switch:checked ~ .sheet-trained-laserrifle-hide,
+.sheet-trained-airraft-switch:checked ~ .sheet-trained-airraft-hide,
+.sheet-trained-atv-switch:checked ~ .sheet-trained-atv-hide,
+.sheet-trained-groundcar-switch:checked ~ .sheet-trained-groundcar-hide,
+.sheet-trained-sailboat-switch:checked ~ .sheet-trained-sailboat-hide,
+.sheet-trained-motorboat-switch:checked ~ .sheet-trained-motorboat-hide,
+.sheet-trained-submersible-switch:checked ~ .sheet-trained-submersible-hide,
+.sheet-trained-fixedwingaircraft-switch:checked ~ .sheet-trained-fixedwingaircraft-hide,
+.sheet-trained-helicopter-switch:checked ~ .sheet-trained-helicopter-hide,
+.sheet-trained-hovercraft-switch:checked ~ .sheet-trained-hovercraft-hide,
+.sheet-trained-gravbelt-switch:checked ~ .sheet-trained-gravbelt-hide
+{
+   display: inline;
+}
