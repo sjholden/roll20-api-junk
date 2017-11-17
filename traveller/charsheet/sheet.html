@@ -1,0 +1,1610 @@
+	<div class="sheet-all-tabs">
+<div class="sheet-header-tab">
+    <span name="attr_character_name" style="float: left; width: 70%;"></span>
+    <span name="attr_upp" value="" style="float: right; width: 20%; text-align: right;"></span>	
+</div>
+		<input type="radio" name="attr_tab" class="sheet-tab sheet-tab1" value="1" id="radio1" title="Prime" checked="checked" /><span>Stats</span>
+	    <input type="radio" name="attr_tab" class="sheet-tab sheet-tab2" value="2" id="radio2" title="Skills" /><span>Skills</span>
+	    <input type="radio" name="attr_tab" class="sheet-tab sheet-tab3" value="3" id="radio3" title="Weapon Skills" /><span>Weapon Skills</span>
+	    <input type="radio" name="attr_tab" class="sheet-tab sheet-tab4" value="4" id="radio4" title="Vehicle Skills" /><span>Vehicle Skills</span>
+	    <input type="radio" name="attr_tab" class="sheet-tab sheet-tab5" value="5" id="radio5" title="Combat" /><span>Combat</span>
+	    <input type="radio" name="attr_tab" class="sheet-tab sheet-tab6" value="6" id="radio6" title="Data" /><span>Data</span>
+
+		<div class="sheet-tab-content sheet-tab1">
+		<div style="height: 50px"></div>
+		<table>
+			<tr>
+				<td>Name:</td>
+				<td><input type="text" name="attr_character_name" /></td>
+				<td>Age:</td>
+				<td><input type="number" name="attr_age" /> (+<input type="number" name="attr_age_weeks" /> weeks)</td>                
+			</tr>
+			<tr>
+				<td>Service</td>
+				<td><input type="number" name='attr_terms' class='sheet-short'> terms 
+				<select class="sheet-input" name="attr_service">
+				            <option value="Navy">Navy</option>
+				            <option value="Marines">Marines</option>
+				            <option value="Army">Army</option>
+				            <option value="Scouts">Scouts</option>
+				            <option value="Merchants">Merchants</option>
+				            <option value="Other">Other</option>
+				            </select></td>
+				<td>Rank:</td>
+				<td><input type="text" name="attr_career_rank" /></td>
+			</tr>
+			<tr>
+				<td>Retired?</td>
+				<td><input type="radio" name='attr_retired' value="No" checked class='sheet-short'>No 
+				            <input type="radio" name='attr_retired' value="Yes" class='sheet-short'>Yes</td>
+				<td>Retirement Pay</td>
+				<td><input type="number" name='attr_retirement_pay' class='sheet-short'></td>
+			</tr>
+			<tr>
+				<td>TAS?</td>
+				<td><input type="radio" name='attr_tas' value="No" checked class='sheet-short'>No 
+				    <input type="radio" name='attr_tas' value="Yes" class='sheet-short'>Yes</td>
+				<td>Noble Title:</td>
+				<td><input type="text" name="attr_noble_title" /></td>
+			</tr>
+			<tr>
+				<td>Money:</td>
+				<td><input type="text" name="attr_money" /></td>
+			</tr>
+		</table>
+		
+		<hr/>
+				<table><tr><td>
+				<h3>UPP</h3>
+		        <table>
+				<tr>
+		            <td>Strength</td>
+		            <td><input type="number" name='attr_strength' class='sheet-short'>/<input type="number" name='attr_strength_max' class='sheet-short'></td>
+		        </tr>
+				<tr>
+		            <td>Dexterity</td>
+		            <td><input type="number" name='attr_dexterity' class='sheet-short'>/<input type="number" name='attr_dexterity_max' class='sheet-short'></td>
+		        </tr>
+				<tr>
+		            <td>Endurance</td>
+		            <td><input type="number" name='attr_endurance' class='sheet-short'>/<input type="number" name='attr_endurance_max' class='sheet-short'></td>
+		        </tr>
+				<tr>
+		            <td>Intelligence</td>
+		            <td><input type="number" name='attr_intelligence' class='sheet-short'>/<input type="number" name='attr_intelligence_max' class='sheet-short'></td>
+		        </tr>
+				<tr>
+		            <td>Education</td>
+		            <td><input type="number" name='attr_education' class='sheet-short'>/<input type="number" name='attr_education_max' class='sheet-short'></td>
+		        </tr>
+		        <tr>
+		            <td>Social Standing</td>
+		            <td><input type="number" name='attr_social' class='sheet-short'>/<input type="number" name='attr_social_max' class='sheet-short'></td>
+		        </tr>
+		        </table></td><td>&nbsp;</td><td><h3>Possessions</h3><textarea name="attr_possessions" rows=20 cols=80"></textarea></td></tr></table>
+		
+		<hr />
+		</div>
+		
+		    <div class="sheet-tab-content sheet-tab2">
+		<div style="height: 50px"></div>
+		
+		
+		
+		<table class="sheet-skilltable">
+		    <tr>
+		        <th>Skill</th>
+		        <th>Level</th>
+		        <th>Rolls</th>
+		    </tr>
+<tr>
+	<td>Admin</td>
+	<td><input type="checkbox" class="sheet-trained-admin-switch" name="attr_trained_admin" value="1" /><input type="number" class="sheet-trained-admin-hide" name="attr_skill_admin" value="0" /></td>
+	<td><button name="roll_base_admin" type="roll" value="&{template:default} {{name= @{character_name} Base Admin roll}} {{roll= [[ 2d6+ ((@{skill_admin})*1)[SKILL]- ((1-@{trained_admin})*5)[NO EXPERTISE] ]]}}">Base Admin</button></td><td><button name="roll_adminstandard" type="roll" value="&{template:default} {{name= @{character_name} Standard Admin roll}} {{roll= [[ 2d6+ ((@{skill_admin})*2)[SKILL]- ((1-@{trained_admin})*3)[NO EXPERTISE] ]]}}">Standard Admin</button></td>
+</tr>
+
+<tr>
+	<td>Bribery</td>
+	<td><input type="checkbox" class="sheet-trained-bribery-switch" name="attr_trained_bribery" value="1" /><input type="number" class="sheet-trained-bribery-hide" name="attr_skill_bribery" value="0" /></td>
+	<td><button name="roll_base_bribery" type="roll" value="&{template:default} {{name= @{character_name} Base Bribery roll}} {{roll= [[ 2d6+ ((@{skill_bribery})*1)[SKILL]- ((1-@{trained_bribery})*5)[NO EXPERTISE] ]]}}">Base Bribery</button></td>
+</tr>
+
+<tr>
+	<td>Computer</td>
+	<td><input type="checkbox" class="sheet-trained-computer-switch" name="attr_trained_computer" value="1" /><input type="number" class="sheet-trained-computer-hide" name="attr_skill_computer" value="0" /></td>
+	<td><button name="roll_base_computer" type="roll" value="&{template:default} {{name= @{character_name} Base Computer roll}} {{roll= [[ 2d6+ ((@{skill_computer})*1)[SKILL]- ((1-@{trained_computer})*5)[NO EXPERTISE] ]]}}">Base Computer</button></td><td><button name="roll_computersimple" type="roll" value="&{template:default} {{name= @{character_name} Simple Computer roll}} {{roll= [[ 2d6+ ((@{skill_computer})*1)[SKILL] ]]}}">Simple Computer</button></td>
+</tr>
+
+<tr>
+	<td>Electronics</td>
+	<td><input type="checkbox" class="sheet-trained-electronics-switch" name="attr_trained_electronics" value="1" /><input type="number" class="sheet-trained-electronics-hide" name="attr_skill_electronics" value="0" /></td>
+	<td><button name="roll_base_electronics" type="roll" value="&{template:default} {{name= @{character_name} Base Electronics roll}} {{roll= [[ 2d6+ ((@{skill_electronics})*1)[SKILL]- ((1-@{trained_electronics})*5)[NO EXPERTISE] ]]}}">Base Electronics</button></td>
+</tr>
+
+<tr>
+	<td>Engineering</td>
+	<td><input type="checkbox" class="sheet-trained-engineering-switch" name="attr_trained_engineering" value="1" /><input type="number" class="sheet-trained-engineering-hide" name="attr_skill_engineering" value="0" /></td>
+	<td><button name="roll_base_engineering" type="roll" value="&{template:default} {{name= @{character_name} Base Engineering roll}} {{roll= [[ 2d6+ ((@{skill_engineering})*1)[SKILL]- ((1-@{trained_engineering})*5)[NO EXPERTISE] ]]}}">Base Engineering</button></td>
+</tr>
+
+<tr>
+	<td>Forgery</td>
+	<td><input type="checkbox" class="sheet-trained-forgery-switch" name="attr_trained_forgery" value="1" /><input type="number" class="sheet-trained-forgery-hide" name="attr_skill_forgery" value="0" /></td>
+	<td><button name="roll_base_forgery" type="roll" value="&{template:default} {{name= @{character_name} Base Forgery roll}} {{roll= [[ 2d6+ ((@{skill_forgery})*1)[SKILL]- ((1-@{trained_forgery})*5)[NO EXPERTISE] ]]}}">Base Forgery</button></td><td><button name="roll_forge" type="roll" value="&{template:default} {{name= @{character_name} Force Documents roll}} {{roll= [[ 2d6+ ((@{skill_forgery})*2)[SKILL] ]]}}">Force Documents</button></td>
+</tr>
+
+<tr>
+	<td>Forward Observer</td>
+	<td><input type="checkbox" class="sheet-trained-forwardobserver-switch" name="attr_trained_forwardobserver" value="1" /><input type="number" class="sheet-trained-forwardobserver-hide" name="attr_skill_forwardobserver" value="0" /></td>
+	<td><button name="roll_base_forwardobserver" type="roll" value="&{template:default} {{name= @{character_name} Base Forward Observer roll}} {{roll= [[ 2d6+ ((@{skill_forwardobserver})*1)[SKILL]- ((1-@{trained_forwardobserver})*5)[NO EXPERTISE] ]]}}">Base Forward Observer</button></td><td><button name="roll_guideartillery" type="roll" value="&{template:default} {{name= @{character_name} Guide Artillery roll}} {{roll= [[ 2d6+ ((@{skill_forwardobserver})*4)[SKILL]- ((1-@{trained_forwardobserver})*4)[NO EXPERTISE] ]]}}">Guide Artillery</button></td>
+</tr>
+
+<tr>
+	<td>Gambling</td>
+	<td><input type="checkbox" class="sheet-trained-gambling-switch" name="attr_trained_gambling" value="1" /><input type="number" class="sheet-trained-gambling-hide" name="attr_skill_gambling" value="0" /></td>
+	<td><button name="roll_base_gambling" type="roll" value="&{template:default} {{name= @{character_name} Base Gambling roll}} {{roll= [[ 2d6+ ((@{skill_gambling})*1)[SKILL]- ((1-@{trained_gambling})*5)[NO EXPERTISE] ]]}}">Base Gambling</button></td>
+</tr>
+
+<tr>
+	<td>Gunnery</td>
+	<td><input type="checkbox" class="sheet-trained-gunnery-switch" name="attr_trained_gunnery" value="1" /><input type="number" class="sheet-trained-gunnery-hide" name="attr_skill_gunnery" value="0" /></td>
+	<td><button name="roll_base_gunnery" type="roll" value="&{template:default} {{name= @{character_name} Base Gunnery roll}} {{roll= [[ 2d6+ ((@{skill_gunnery})*1)[SKILL]- ((1-@{trained_gunnery})*5)[NO EXPERTISE] ]]}}">Base Gunnery</button></td>
+</tr>
+
+<tr>
+	<td>Jack-of-all-Trades</td>
+	<td><input type="checkbox" class="sheet-trained-jackofalltrades-switch" name="attr_trained_jackofalltrades" value="1" /><input type="number" class="sheet-trained-jackofalltrades-hide" name="attr_skill_jackofalltrades" value="0" /></td>
+	<td></td>
+</tr>
+
+<tr>
+	<td>Leader</td>
+	<td><input type="checkbox" class="sheet-trained-leader-switch" name="attr_trained_leader" value="1" /><input type="number" class="sheet-trained-leader-hide" name="attr_skill_leader" value="0" /></td>
+	<td><button name="roll_base_leader" type="roll" value="&{template:default} {{name= @{character_name} Base Leader roll}} {{roll= [[ 2d6+ ((@{skill_leader})*1)[SKILL]- ((1-@{trained_leader})*5)[NO EXPERTISE] ]]}}">Base Leader</button></td>
+</tr>
+
+<tr>
+	<td>Mechanical</td>
+	<td><input type="checkbox" class="sheet-trained-mechanical-switch" name="attr_trained_mechanical" value="1" /><input type="number" class="sheet-trained-mechanical-hide" name="attr_skill_mechanical" value="0" /></td>
+	<td><button name="roll_base_mechanical" type="roll" value="&{template:default} {{name= @{character_name} Base Mechanical roll}} {{roll= [[ 2d6+ ((@{skill_mechanical})*1)[SKILL]- ((1-@{trained_mechanical})*5)[NO EXPERTISE] ]]}}">Base Mechanical</button></td>
+</tr>
+
+<tr>
+	<td>Medical</td>
+	<td><input type="checkbox" class="sheet-trained-medical-switch" name="attr_trained_medical" value="1" /><input type="number" class="sheet-trained-medical-hide" name="attr_skill_medical" value="0" /></td>
+	<td><button name="roll_base_medical" type="roll" value="&{template:default} {{name= @{character_name} Base Medical roll}} {{roll= [[ 2d6+ ((@{skill_medical})*1)[SKILL]- ((1-@{trained_medical})*5)[NO EXPERTISE] ]]}}">Base Medical</button></td><td><button name="roll_lowrevive" type="roll" value="&{template:default} {{name= @{character_name} Medical Low Revival roll}} {{roll= [[ 2d6+ ({{@{skill_medical},0}>2}*1)[SKILL]- ((1-@{trained_medical})*5)[NO EXPERTISE] ]]}}">Medical Low Revival</button></td>
+</tr>
+
+<tr>
+	<td>Navigation</td>
+	<td><input type="checkbox" class="sheet-trained-navigation-switch" name="attr_trained_navigation" value="1" /><input type="number" class="sheet-trained-navigation-hide" name="attr_skill_navigation" value="0" /></td>
+	<td><button name="roll_base_navigation" type="roll" value="&{template:default} {{name= @{character_name} Base Navigation roll}} {{roll= [[ 2d6+ ((@{skill_navigation})*1)[SKILL]- ((1-@{trained_navigation})*5)[NO EXPERTISE] ]]}}">Base Navigation</button></td>
+</tr>
+
+<tr>
+	<td>Pilot</td>
+	<td><input type="checkbox" class="sheet-trained-pilot-switch" name="attr_trained_pilot" value="1" /><input type="number" class="sheet-trained-pilot-hide" name="attr_skill_pilot" value="0" /></td>
+	<td><button name="roll_base_pilot" type="roll" value="&{template:default} {{name= @{character_name} Base Pilot roll}} {{roll= [[ 2d6+ ((@{skill_pilot})*1)[SKILL]- ((1-@{trained_pilot})*5)[NO EXPERTISE] ]]}}">Base Pilot</button></td><td><button name="roll_pilotasboat" type="roll" value="&{template:default} {{name= @{character_name} As Ship's Boat roll}} {{roll= [[ 2d6+ ((@{skill_pilot} - 1)*1)[SKILL]- ((1-@{trained_pilot})*5)[NO EXPERTISE] ]]}}">As Ship's Boat</button></td>
+</tr>
+
+<tr>
+	<td>Ship's Boat</td>
+	<td><input type="checkbox" class="sheet-trained-shipsboat-switch" name="attr_trained_shipsboat" value="1" /><input type="number" class="sheet-trained-shipsboat-hide" name="attr_skill_shipsboat" value="0" /></td>
+	<td><button name="roll_base_shipsboat" type="roll" value="&{template:default} {{name= @{character_name} Base Ship's Boat roll}} {{roll= [[ 2d6+ ((@{skill_shipsboat})*1)[SKILL]- ((1-@{trained_shipsboat})*5)[NO EXPERTISE] ]]}}">Base Ship's Boat</button></td>
+</tr>
+
+<tr>
+	<td>Steward</td>
+	<td><input type="checkbox" class="sheet-trained-steward-switch" name="attr_trained_steward" value="1" /><input type="number" class="sheet-trained-steward-hide" name="attr_skill_steward" value="0" /></td>
+	<td><button name="roll_base_steward" type="roll" value="&{template:default} {{name= @{character_name} Base Steward roll}} {{roll= [[ 2d6+ ((@{skill_steward})*1)[SKILL]- ((1-@{trained_steward})*5)[NO EXPERTISE] ]]}}">Base Steward</button></td>
+</tr>
+
+<tr>
+	<td>Streetwise</td>
+	<td><input type="checkbox" class="sheet-trained-streetwise-switch" name="attr_trained_streetwise" value="1" /><input type="number" class="sheet-trained-streetwise-hide" name="attr_skill_streetwise" value="0" /></td>
+	<td><button name="roll_base_streetwise" type="roll" value="&{template:default} {{name= @{character_name} Base Streetwise roll}} {{roll= [[ 2d6+ ((@{skill_streetwise})*1)[SKILL]- ((1-@{trained_streetwise})*5)[NO EXPERTISE] ]]}}">Base Streetwise</button></td>
+</tr>
+
+<tr>
+	<td>Tactics</td>
+	<td><input type="checkbox" class="sheet-trained-tactics-switch" name="attr_trained_tactics" value="1" /><input type="number" class="sheet-trained-tactics-hide" name="attr_skill_tactics" value="0" /></td>
+	<td><button name="roll_base_tactics" type="roll" value="&{template:default} {{name= @{character_name} Base Tactics roll}} {{roll= [[ 2d6+ ((@{skill_tactics})*1)[SKILL]- ((1-@{trained_tactics})*5)[NO EXPERTISE] ]]}}">Base Tactics</button></td>
+</tr>
+
+<tr>
+	<td>Vacc Suit</td>
+	<td><input type="checkbox" class="sheet-trained-vaccsuit-switch" name="attr_trained_vaccsuit" value="1" /><input type="number" class="sheet-trained-vaccsuit-hide" name="attr_skill_vaccsuit" value="0" /></td>
+	<td><button name="roll_base_vaccsuit" type="roll" value="&{template:default} {{name= @{character_name} Base Vacc Suit roll}} {{roll= [[ 2d6+ ((@{skill_vaccsuit})*1)[SKILL]- ((1-@{trained_vaccsuit})*5)[NO EXPERTISE] ]]}}">Base Vacc Suit</button></td>
+</tr>
+</table>
+
+		</div>
+		
+		    <div class="sheet-tab-content sheet-tab3">
+		<div style="height: 50px"></div>
+		
+		
+		
+		<table class="sheet-skilltable">
+		    <tr>
+		        <th>Skill</th>
+		        <th>Level</th>
+		        <th>Rolls</th>
+		    </tr>
+<tr>
+	<td>Brawling</td>
+	<td><input type="checkbox" class="sheet-trained-brawling-switch" name="attr_trained_brawling" value="1" /><input type="number" class="sheet-trained-brawling-hide" name="attr_skill_brawling" value="0" /></td>
+	<td><button name="roll_base_brawling" type="roll" value="&{template:default} {{name= @{character_name} Base Brawling roll}} {{roll= [[ 2d6+ ((@{skill_brawling})*1)[SKILL]- ((1-@{trained_brawling})*5)[NO EXPERTISE] ]]}}">Base Brawling</button></td>
+</tr>
+<tr>
+	<td>Dagger</td>
+	<td><input type="checkbox" class="sheet-trained-dagger-switch" name="attr_trained_dagger" value="1" /><input type="number" class="sheet-trained-dagger-hide" name="attr_skill_dagger" value="0" /></td>
+	<td><button name="roll_base_dagger" type="roll" value="&{template:default} {{name= @{character_name} Base Dagger roll}} {{roll= [[ 2d6+ ((@{skill_dagger})*1)[SKILL]- ((1-@{trained_dagger})*5)[NO EXPERTISE] ]]}}">Base Dagger</button></td>
+</tr>
+<tr>
+	<td>Blade</td>
+	<td><input type="checkbox" class="sheet-trained-blade-switch" name="attr_trained_blade" value="1" /><input type="number" class="sheet-trained-blade-hide" name="attr_skill_blade" value="0" /></td>
+	<td><button name="roll_base_blade" type="roll" value="&{template:default} {{name= @{character_name} Base Blade roll}} {{roll= [[ 2d6+ ((@{skill_blade})*1)[SKILL]- ((1-@{trained_blade})*5)[NO EXPERTISE] ]]}}">Base Blade</button></td>
+</tr>
+<tr>
+	<td>Foil</td>
+	<td><input type="checkbox" class="sheet-trained-foil-switch" name="attr_trained_foil" value="1" /><input type="number" class="sheet-trained-foil-hide" name="attr_skill_foil" value="0" /></td>
+	<td><button name="roll_base_foil" type="roll" value="&{template:default} {{name= @{character_name} Base Foil roll}} {{roll= [[ 2d6+ ((@{skill_foil})*1)[SKILL]- ((1-@{trained_foil})*5)[NO EXPERTISE] ]]}}">Base Foil</button></td>
+</tr>
+<tr>
+	<td>Cutlass</td>
+	<td><input type="checkbox" class="sheet-trained-cutlass-switch" name="attr_trained_cutlass" value="1" /><input type="number" class="sheet-trained-cutlass-hide" name="attr_skill_cutlass" value="0" /></td>
+	<td><button name="roll_base_cutlass" type="roll" value="&{template:default} {{name= @{character_name} Base Cutlass roll}} {{roll= [[ 2d6+ ((@{skill_cutlass})*1)[SKILL]- ((1-@{trained_cutlass})*5)[NO EXPERTISE] ]]}}">Base Cutlass</button></td>
+</tr>
+<tr>
+	<td>Sword</td>
+	<td><input type="checkbox" class="sheet-trained-sword-switch" name="attr_trained_sword" value="1" /><input type="number" class="sheet-trained-sword-hide" name="attr_skill_sword" value="0" /></td>
+	<td><button name="roll_base_sword" type="roll" value="&{template:default} {{name= @{character_name} Base Sword roll}} {{roll= [[ 2d6+ ((@{skill_sword})*1)[SKILL]- ((1-@{trained_sword})*5)[NO EXPERTISE] ]]}}">Base Sword</button></td>
+</tr>
+<tr>
+	<td>Broadsword</td>
+	<td><input type="checkbox" class="sheet-trained-broadsword-switch" name="attr_trained_broadsword" value="1" /><input type="number" class="sheet-trained-broadsword-hide" name="attr_skill_broadsword" value="0" /></td>
+	<td><button name="roll_base_broadsword" type="roll" value="&{template:default} {{name= @{character_name} Base Broadsword roll}} {{roll= [[ 2d6+ ((@{skill_broadsword})*1)[SKILL]- ((1-@{trained_broadsword})*5)[NO EXPERTISE] ]]}}">Base Broadsword</button></td>
+</tr>
+<tr>
+	<td>Bayonet</td>
+	<td><input type="checkbox" class="sheet-trained-bayonet-switch" name="attr_trained_bayonet" value="1" /><input type="number" class="sheet-trained-bayonet-hide" name="attr_skill_bayonet" value="0" /></td>
+	<td><button name="roll_base_bayonet" type="roll" value="&{template:default} {{name= @{character_name} Base Bayonet roll}} {{roll= [[ 2d6+ ((@{skill_bayonet})*1)[SKILL]- ((1-@{trained_bayonet})*5)[NO EXPERTISE] ]]}}">Base Bayonet</button></td>
+</tr>
+<tr>
+	<td>Spear</td>
+	<td><input type="checkbox" class="sheet-trained-spear-switch" name="attr_trained_spear" value="1" /><input type="number" class="sheet-trained-spear-hide" name="attr_skill_spear" value="0" /></td>
+	<td><button name="roll_base_spear" type="roll" value="&{template:default} {{name= @{character_name} Base Spear roll}} {{roll= [[ 2d6+ ((@{skill_spear})*1)[SKILL]- ((1-@{trained_spear})*5)[NO EXPERTISE] ]]}}">Base Spear</button></td>
+</tr>
+<tr>
+	<td>Halberd</td>
+	<td><input type="checkbox" class="sheet-trained-halberd-switch" name="attr_trained_halberd" value="1" /><input type="number" class="sheet-trained-halberd-hide" name="attr_skill_halberd" value="0" /></td>
+	<td><button name="roll_base_halberd" type="roll" value="&{template:default} {{name= @{character_name} Base Halberd roll}} {{roll= [[ 2d6+ ((@{skill_halberd})*1)[SKILL]- ((1-@{trained_halberd})*5)[NO EXPERTISE] ]]}}">Base Halberd</button></td>
+</tr>
+<tr>
+	<td>Pike</td>
+	<td><input type="checkbox" class="sheet-trained-pike-switch" name="attr_trained_pike" value="1" /><input type="number" class="sheet-trained-pike-hide" name="attr_skill_pike" value="0" /></td>
+	<td><button name="roll_base_pike" type="roll" value="&{template:default} {{name= @{character_name} Base Pike roll}} {{roll= [[ 2d6+ ((@{skill_pike})*1)[SKILL]- ((1-@{trained_pike})*5)[NO EXPERTISE] ]]}}">Base Pike</button></td>
+</tr>
+<tr>
+	<td>Cudgel</td>
+	<td><input type="checkbox" class="sheet-trained-cudgel-switch" name="attr_trained_cudgel" value="1" /><input type="number" class="sheet-trained-cudgel-hide" name="attr_skill_cudgel" value="0" /></td>
+	<td><button name="roll_base_cudgel" type="roll" value="&{template:default} {{name= @{character_name} Base Cudgel roll}} {{roll= [[ 2d6+ ((@{skill_cudgel})*1)[SKILL]- ((1-@{trained_cudgel})*5)[NO EXPERTISE] ]]}}">Base Cudgel</button></td>
+</tr>
+<tr>
+	<td>Body Pistol</td>
+	<td><input type="checkbox" class="sheet-trained-bodypistol-switch" name="attr_trained_bodypistol" value="1" /><input type="number" class="sheet-trained-bodypistol-hide" name="attr_skill_bodypistol" value="0" /></td>
+	<td><button name="roll_base_bodypistol" type="roll" value="&{template:default} {{name= @{character_name} Base Body Pistol roll}} {{roll= [[ 2d6+ ((@{skill_bodypistol})*1)[SKILL]- ((1-@{trained_bodypistol})*5)[NO EXPERTISE] ]]}}">Base Body Pistol</button></td>
+</tr>
+<tr>
+	<td>Automatic Pistol</td>
+	<td><input type="checkbox" class="sheet-trained-automaticpistol-switch" name="attr_trained_automaticpistol" value="1" /><input type="number" class="sheet-trained-automaticpistol-hide" name="attr_skill_automaticpistol" value="0" /></td>
+	<td><button name="roll_base_automaticpistol" type="roll" value="&{template:default} {{name= @{character_name} Base Automatic Pistol roll}} {{roll= [[ 2d6+ ((@{skill_automaticpistol})*1)[SKILL]- ((1-@{trained_automaticpistol})*5)[NO EXPERTISE] ]]}}">Base Automatic Pistol</button></td>
+</tr>
+<tr>
+	<td>Revolver</td>
+	<td><input type="checkbox" class="sheet-trained-revolver-switch" name="attr_trained_revolver" value="1" /><input type="number" class="sheet-trained-revolver-hide" name="attr_skill_revolver" value="0" /></td>
+	<td><button name="roll_base_revolver" type="roll" value="&{template:default} {{name= @{character_name} Base Revolver roll}} {{roll= [[ 2d6+ ((@{skill_revolver})*1)[SKILL]- ((1-@{trained_revolver})*5)[NO EXPERTISE] ]]}}">Base Revolver</button></td>
+</tr>
+<tr>
+	<td>Carbine</td>
+	<td><input type="checkbox" class="sheet-trained-carbine-switch" name="attr_trained_carbine" value="1" /><input type="number" class="sheet-trained-carbine-hide" name="attr_skill_carbine" value="0" /></td>
+	<td><button name="roll_base_carbine" type="roll" value="&{template:default} {{name= @{character_name} Base Carbine roll}} {{roll= [[ 2d6+ ((@{skill_carbine})*1)[SKILL]- ((1-@{trained_carbine})*5)[NO EXPERTISE] ]]}}">Base Carbine</button></td>
+</tr>
+<tr>
+	<td>Rifle</td>
+	<td><input type="checkbox" class="sheet-trained-rifle-switch" name="attr_trained_rifle" value="1" /><input type="number" class="sheet-trained-rifle-hide" name="attr_skill_rifle" value="0" /></td>
+	<td><button name="roll_base_rifle" type="roll" value="&{template:default} {{name= @{character_name} Base Rifle roll}} {{roll= [[ 2d6+ ((@{skill_rifle})*1)[SKILL]- ((1-@{trained_rifle})*5)[NO EXPERTISE] ]]}}">Base Rifle</button></td>
+</tr>
+<tr>
+	<td>Automatic Rifle</td>
+	<td><input type="checkbox" class="sheet-trained-automaticrifle-switch" name="attr_trained_automaticrifle" value="1" /><input type="number" class="sheet-trained-automaticrifle-hide" name="attr_skill_automaticrifle" value="0" /></td>
+	<td><button name="roll_base_automaticrifle" type="roll" value="&{template:default} {{name= @{character_name} Base Automatic Rifle roll}} {{roll= [[ 2d6+ ((@{skill_automaticrifle})*1)[SKILL]- ((1-@{trained_automaticrifle})*5)[NO EXPERTISE] ]]}}">Base Automatic Rifle</button></td>
+</tr>
+<tr>
+	<td>Shotgun</td>
+	<td><input type="checkbox" class="sheet-trained-shotgun-switch" name="attr_trained_shotgun" value="1" /><input type="number" class="sheet-trained-shotgun-hide" name="attr_skill_shotgun" value="0" /></td>
+	<td><button name="roll_base_shotgun" type="roll" value="&{template:default} {{name= @{character_name} Base Shotgun roll}} {{roll= [[ 2d6+ ((@{skill_shotgun})*1)[SKILL]- ((1-@{trained_shotgun})*5)[NO EXPERTISE] ]]}}">Base Shotgun</button></td>
+</tr>
+<tr>
+	<td>Submachinegun</td>
+	<td><input type="checkbox" class="sheet-trained-submachinegun-switch" name="attr_trained_submachinegun" value="1" /><input type="number" class="sheet-trained-submachinegun-hide" name="attr_skill_submachinegun" value="0" /></td>
+	<td><button name="roll_base_submachinegun" type="roll" value="&{template:default} {{name= @{character_name} Base Submachinegun roll}} {{roll= [[ 2d6+ ((@{skill_submachinegun})*1)[SKILL]- ((1-@{trained_submachinegun})*5)[NO EXPERTISE] ]]}}">Base Submachinegun</button></td>
+</tr>
+<tr>
+	<td>Laser Carbine</td>
+	<td><input type="checkbox" class="sheet-trained-lasercarbine-switch" name="attr_trained_lasercarbine" value="1" /><input type="number" class="sheet-trained-lasercarbine-hide" name="attr_skill_lasercarbine" value="0" /></td>
+	<td><button name="roll_base_lasercarbine" type="roll" value="&{template:default} {{name= @{character_name} Base Laser Carbine roll}} {{roll= [[ 2d6+ ((@{skill_lasercarbine})*1)[SKILL]- ((1-@{trained_lasercarbine})*5)[NO EXPERTISE] ]]}}">Base Laser Carbine</button></td>
+</tr>
+<tr>
+	<td>Laser Rifle</td>
+	<td><input type="checkbox" class="sheet-trained-laserrifle-switch" name="attr_trained_laserrifle" value="1" /><input type="number" class="sheet-trained-laserrifle-hide" name="attr_skill_laserrifle" value="0" /></td>
+	<td><button name="roll_base_laserrifle" type="roll" value="&{template:default} {{name= @{character_name} Base Laser Rifle roll}} {{roll= [[ 2d6+ ((@{skill_laserrifle})*1)[SKILL]- ((1-@{trained_laserrifle})*5)[NO EXPERTISE] ]]}}">Base Laser Rifle</button></td>
+</tr>
+		    
+		</table>
+		</div>
+		
+		    <div class="sheet-tab-content sheet-tab4">
+		<div style="height: 50px"></div>
+		
+		
+		
+		<table class="sheet-skilltable">
+		    <tr>
+		        <th>Skill</th>
+		        <th>Level</th>
+		        <th>Rolls</th>
+		    </tr>
+
+<tr>
+	<td>Air/Raft</td>
+	<td><input type="checkbox" class="sheet-trained-airraft-switch" name="attr_trained_airraft" value="1" /><input type="number" class="sheet-trained-airraft-hide" name="attr_skill_airraft" value="0" /></td>
+	<td><button name="roll_base_airraft" type="roll" value="&{template:default} {{name= @{character_name} Base Air/Raft roll}} {{roll= [[ 2d6+ ((@{skill_airraft})*1)[SKILL]- ((1-@{trained_airraft})*5)[NO EXPERTISE] ]]}}">Base Air/Raft</button></td>
+</tr>
+<tr>
+	<td>ATV</td>
+	<td><input type="checkbox" class="sheet-trained-atv-switch" name="attr_trained_atv" value="1" /><input type="number" class="sheet-trained-atv-hide" name="attr_skill_atv" value="0" /></td>
+	<td><button name="roll_base_atv" type="roll" value="&{template:default} {{name= @{character_name} Base ATV roll}} {{roll= [[ 2d6+ ((@{skill_atv})*1)[SKILL]- ((1-@{trained_atv})*5)[NO EXPERTISE] ]]}}">Base ATV</button></td>
+</tr>
+<tr>
+	<td>Ground Car</td>
+	<td><input type="checkbox" class="sheet-trained-groundcar-switch" name="attr_trained_groundcar" value="1" /><input type="number" class="sheet-trained-groundcar-hide" name="attr_skill_groundcar" value="0" /></td>
+	<td><button name="roll_base_groundcar" type="roll" value="&{template:default} {{name= @{character_name} Base Ground Car roll}} {{roll= [[ 2d6+ ((@{skill_groundcar})*1)[SKILL]- ((1-@{trained_groundcar})*5)[NO EXPERTISE] ]]}}">Base Ground Car</button></td>
+</tr>
+<tr>
+	<td>Sail Boat</td>
+	<td><input type="checkbox" class="sheet-trained-sailboat-switch" name="attr_trained_sailboat" value="1" /><input type="number" class="sheet-trained-sailboat-hide" name="attr_skill_sailboat" value="0" /></td>
+	<td><button name="roll_base_sailboat" type="roll" value="&{template:default} {{name= @{character_name} Base Sail Boat roll}} {{roll= [[ 2d6+ ((@{skill_sailboat})*1)[SKILL]- ((1-@{trained_sailboat})*5)[NO EXPERTISE] ]]}}">Base Sail Boat</button></td>
+</tr>
+<tr>
+	<td>Motor Boat</td>
+	<td><input type="checkbox" class="sheet-trained-motorboat-switch" name="attr_trained_motorboat" value="1" /><input type="number" class="sheet-trained-motorboat-hide" name="attr_skill_motorboat" value="0" /></td>
+	<td><button name="roll_base_motorboat" type="roll" value="&{template:default} {{name= @{character_name} Base Motor Boat roll}} {{roll= [[ 2d6+ ((@{skill_motorboat})*1)[SKILL]- ((1-@{trained_motorboat})*5)[NO EXPERTISE] ]]}}">Base Motor Boat</button></td>
+</tr>
+<tr>
+	<td>Submersible</td>
+	<td><input type="checkbox" class="sheet-trained-submersible-switch" name="attr_trained_submersible" value="1" /><input type="number" class="sheet-trained-submersible-hide" name="attr_skill_submersible" value="0" /></td>
+	<td><button name="roll_base_submersible" type="roll" value="&{template:default} {{name= @{character_name} Base Submersible roll}} {{roll= [[ 2d6+ ((@{skill_submersible})*1)[SKILL]- ((1-@{trained_submersible})*5)[NO EXPERTISE] ]]}}">Base Submersible</button></td>
+</tr>
+<tr>
+	<td>Fixed Wing Aircraft</td>
+	<td><input type="checkbox" class="sheet-trained-fixedwingaircraft-switch" name="attr_trained_fixedwingaircraft" value="1" /><input type="number" class="sheet-trained-fixedwingaircraft-hide" name="attr_skill_fixedwingaircraft" value="0" /></td>
+	<td><button name="roll_base_fixedwingaircraft" type="roll" value="&{template:default} {{name= @{character_name} Base Fixed Wing Aircraft roll}} {{roll= [[ 2d6+ ((@{skill_fixedwingaircraft})*1)[SKILL]- ((1-@{trained_fixedwingaircraft})*5)[NO EXPERTISE] ]]}}">Base Fixed Wing Aircraft</button></td>
+</tr>
+<tr>
+	<td>Helicopter</td>
+	<td><input type="checkbox" class="sheet-trained-helicopter-switch" name="attr_trained_helicopter" value="1" /><input type="number" class="sheet-trained-helicopter-hide" name="attr_skill_helicopter" value="0" /></td>
+	<td><button name="roll_base_helicopter" type="roll" value="&{template:default} {{name= @{character_name} Base Helicopter roll}} {{roll= [[ 2d6+ ((@{skill_helicopter})*1)[SKILL]- ((1-@{trained_helicopter})*5)[NO EXPERTISE] ]]}}">Base Helicopter</button></td>
+</tr>
+<tr>
+	<td>Hovercraft</td>
+	<td><input type="checkbox" class="sheet-trained-hovercraft-switch" name="attr_trained_hovercraft" value="1" /><input type="number" class="sheet-trained-hovercraft-hide" name="attr_skill_hovercraft" value="0" /></td>
+	<td><button name="roll_base_hovercraft" type="roll" value="&{template:default} {{name= @{character_name} Base Hovercraft roll}} {{roll= [[ 2d6+ ((@{skill_hovercraft})*1)[SKILL]- ((1-@{trained_hovercraft})*5)[NO EXPERTISE] ]]}}">Base Hovercraft</button></td>
+</tr>
+<tr>
+	<td>Grav Belt</td>
+	<td><input type="checkbox" class="sheet-trained-gravbelt-switch" name="attr_trained_gravbelt" value="1" /><input type="number" class="sheet-trained-gravbelt-hide" name="attr_skill_gravbelt" value="0" /></td>
+	<td><button name="roll_base_gravbelt" type="roll" value="&{template:default} {{name= @{character_name} Base Grav Belt roll}} {{roll= [[ 2d6+ ((@{skill_gravbelt})*1)[SKILL]- ((1-@{trained_gravbelt})*5)[NO EXPERTISE] ]]}}">Base Grav Belt</button></td>
+</tr>
+</table>
+	</div>
+	
+	
+	<div class="sheet-tab-content sheet-tab5">	
+		<div style="height: 50px"></div>
+	<h2>Armor</h2>
+	<select name="attr_armor">
+		<option value="Nothing" selected="selected">Nothing</option>
+		<option value="Jack">Jack</option>
+		<option value="Mesh">Mesh</option>
+		<option value="Cloth">Cloth</option>
+		<option value="Reflec">Reflec</option>
+		<option value="Ablat">Ablat</option>
+		<option value="Combat Armor">Combat Armor</option>
+	</select>
+	<h2>Current Weapon</h2>
+	<select name="attr_currentweapon">
+		<option value="Hands" selected="selected">Hands</option>
+		<option value="Claws">Claws</option>
+        <option value="Teeth">Teeth</option>
+        <option value="Horns">Horns</option>
+        <option value="Hooves">Hooves</option>
+        <option value="Stinger">Stinger</option>
+        <option value="Thrasher">Thrasher</option>
+		<option value="Club">Club</option>
+		<option value="Dagger">Dagger</option>
+		<option value="Blade">Blade</option>
+		<option value="Foil">Foil</option>
+		<option value="Cutless">Cutless</option>
+    	<option value="Sword">Sword</option>
+		<option value="Broadsword">Broadsword</option>
+		<option value="Bayonet">Bayonet</option>
+		<option value="Spear">Spear</option>
+		<option value="Halberd">Halberd</option>
+		<option value="Pike">Pike</option>
+		<option value="Cudgel">Cudgel</option>
+		<option value="Body Pistol">Body Pistol</option>
+		<option value="Automatic Pistol">Automatic Pistol</option>
+		<option value="Revolver">Revolver</option>
+		<option value="Carbine">Carbine</option>
+		<option value="Rifle">Rifle</option>
+		<option value="Automatic Rifle">Automatic Rifle</option>
+		<option value="Shotgun">Shotgun</option>
+		<option value="Submachinegun">Submachinegun</option>
+		<option value="Laser Carbine">Laseer Carbine</option>
+		<option value="Laser Rifle">Laser Rifle</option>    
+	</select>
+	
+	<h2>Weapons</h2>
+		<div class="steet-table">
+			<fieldset class="repeating_weapons">
+			<div class="sheet-tablerowgroup">
+				<div class="sheet-row">
+				<span  class="sheet-cell">
+				<select name="attr_weapontype">
+					<option value="Hands" selected="selected">Hands</option>
+					<option value="Claws">Claws</option>
+                    <option value="Teeth">Teeth</option>
+                    <option value="Horns">Horns</option>
+                    <option value="Hooves">Hooves</option>
+                    <option value="Stinger">Stinger</option>
+                    <option value="Thrasher">Thrasher</option>
+					<option value="Club">Club</option>
+					<option value="Dagger">Dagger</option>
+					<option value="Blade">Blade</option>
+					<option value="Foil">Foil</option>
+					<option value="Cutless">Cutless</option>
+					<option value="Sword">Sword</option>
+					<option value="Broadsword">Broadsword</option>
+					<option value="Bayonet">Bayonet</option>
+					<option value="Spear">Spear</option>
+					<option value="Halberd">Halberd</option>
+					<option value="Pike">Pike</option>
+					<option value="Cudgel">Cudgel</option>
+					<option value="Body Pistol">Body Pistol</option>
+					<option value="Automatic Pistol">Automatic Pistol</option>
+					<option value="Revolver">Revolver</option>
+					<option value="Carbine">Carbine</option>
+					<option value="Rifle">Rifle</option>
+					<option value="Automatic Rifle">Automatic Rifle</option>
+					<option value="Shotgun">Shotgun</option>
+					<option value="Submachinegun">Submachinegun</option>
+					<option value="Laser Carbine">Laseer Carbine</option>
+					<option value="Laser Rifle">Laser Rifle</option>
+				</select>
+				</span>
+				<span class="sheet-cell">
+					<button name="roll_weaponclose" type="roll" value="@{weaponcloseroll}" style="width: 3em" />Close</button>
+					<input type="text" name="attr_weaponcloseroll" style="display: none" value="" />
+					<input type="text" name="attr_weaponclose" style="width: 2em" />
+				</span>
+				<span class="sheet-cell">
+					<button name="roll_weaponshort" type="roll" value="@{weaponshortroll}" style="width: 3em" />Short</button>
+					<input type="text" name="attr_weaponshortroll" style="display: none" value="" />
+					<input type="text" name="attr_weaponshort" style="width: 2em" />
+				</span>
+				<span class="sheet-cell">
+					<button name="roll_weaponmedium" type="roll" value="@{weaponmediumroll}" style="width: 3em" />Med</button>
+					<input type="text" name="attr_weaponmediumroll" style="display: none" value="" />
+					<input type="text" name="attr_weaponmedium" style="width: 2em" />
+				</span>
+				<span class="sheet-cell">
+					<button name="roll_weaponlong" type="roll" value="@{weaponlongroll}" style="width: 3em" />Long</button>
+					<input type="text" name="attr_weaponlongroll" style="display: none" value="" />
+					<input type="text" name="attr_weaponlong" style="width: 2em" />
+				</span>
+				<span class="sheet-cell">
+					<button name="roll_weaponverylong" type="roll" value="@{weaponverylongroll}" style="width: 3em" />V.L.</button>
+					<input type="text" name="attr_weaponverylongroll" style="display: none" value="" />
+					<input type="text" name="attr_weaponverylong" style="width: 2em" />
+				</span>
+				<span class="sheet-cell">
+					<input type="text" name="attr_weaponwounds" style="width: 4em" />
+				</span>
+				</div>
+			</div>
+			</fieldset>
+		</div>
+	</div>
+	<div class="sheet-tab-content sheet-tab6">
+		<div style="height: 50px"></div>
+	
+	<hr />
+	<h3>Armor Numbers</h3>
+	<table>
+	<tr><th>Weapon</th><th>DM</th></tr>
+	<tr><td>Hands</td><td><input type="number" name="attr_armor_hands" /></td></tr>
+	<tr><td>Claws</td><td><input type="number" name="attr_armor_claws" /></td></tr>
+	<tr><td>Teeth</td><td><input type="number" name="attr_armor_teeth" /></td></tr>
+	<tr><td>Horns</td><td><input type="number" name="attr_armor_horns" /></td></tr>
+	<tr><td>Hooves</td><td><input type="number" name="attr_armor_hooves" /></td></tr>
+	<tr><td>Stinger</td><td><input type="number" name="attr_armor_stinger" /></td></tr>
+	<tr><td>Thrasher</td><td><input type="number" name="attr_armor_thrasher" /></td></tr>
+	<tr><td>Club</td><td><input type="number" name="attr_armor_club" /></td></tr>
+	<tr><td>Dagger</td><td><input type="number" name="attr_armor_dagger" /></td></tr>
+	<tr><td>Blade</td><td><input type="number" name="attr_armor_blade" /></td></tr>
+	<tr><td>Foil</td><td><input type="number" name="attr_armor_foil" /></td></tr>
+	<tr><td>Cutlass</td><td><input type="number" name="attr_armor_cutlass" /></td></tr>
+	<tr><td>Sword</td><td><input type="number" name="attr_armor_sword" /></td></tr>
+	<tr><td>Broadsword</td><td><input type="number" name="attr_armor_broadsword" /></td></tr>
+	<tr><td>Bayonet</td><td><input type="number" name="attr_armor_bayonet" /></td></tr>
+	<tr><td>Spear</td><td><input type="number" name="attr_armor_spear" /></td></tr>
+	<tr><td>Halberd</td><td><input type="number" name="attr_armor_halberd" /></td></tr>
+	<tr><td>Pike</td><td><input type="number" name="attr_armor_pike" /></td></tr>
+	<tr><td>Cudgel</td><td><input type="number" name="attr_armor_cudgel" /></td></tr>
+	<tr><td>Body Pistol</td><td><input type="number" name="attr_armor_bodypistol" /></td></tr>
+	<tr><td>Automatic Pistol</td><td><input type="number" name="attr_armor_automaticpistol" /></td></tr>
+	<tr><td>Revolver</td><td><input type="number" name="attr_armor_revolver" /></td></tr>
+	<tr><td>Carbine</td><td><input type="number" name="attr_armor_carbine" /></td></tr>
+	<tr><td>Rifle</td><td><input type="number" name="attr_armor_rifle" /></td></tr>
+	<tr><td>Automatic Rifle</td><td><input type="number" name="attr_armor_automaticrifle" /></td></tr>
+	<tr><td>Shotgun</td><td><input type="number" name="attr_armor_shotgun" /></td></tr>
+	<tr><td>Submachinegun</td><td><input type="number" name="attr_armor_submachinegun" /></td></tr>
+	<tr><td>Laser Carbine</td><td><input type="number" name="attr_armor_lasercarbine" /></td></tr>
+	<tr><td>Laser Rifle</td><td><input type="number" name="attr_armor_laserrifle" /></td></tr>
+	</table>
+	<h3>Current Weapon Data</h3>
+	<table>
+	    <tr><td>Close</td><td><input name="attr_currentweapon_close" /></td></tr>
+	    <tr><td>Short</td><td><input name="attr_currentweapon_short" /></td></tr>
+	    <tr><td>Medium</td><td><input name="attr_currentweapon_medium" /></td></tr>
+	    <tr><td>Long</td><td><input name="attr_currentweapon_long" /></td></tr>
+	    <tr><td>Very Long</td><td><input name="attr_currentweapon_verylong" /></td></tr>
+	    <tr><td>Wounds</td><td><input name="attr_currentweapon_wounds" /></td></td></tr>
+	    <tr><td>Stat</td><td><input name="attr_currentweapon_stat" /></td></td></tr>
+	    <tr><td>Penalty Cutoff</td><td><input name="attr_currentweapon_penaltycutoff" /></td></td></tr>
+	    <tr><td>Penalty DM</td><td><input name="attr_currentweapon_penaltydm" /></td></td></tr>
+	    <tr><td>Bonus Cutoff</td><td><input name="attr_currentweapon_bonuscutoff" /></td></td></tr>
+	    <tr><td>Bonus DM</td><td><input name="attr_currentweapon_bonusdm" /></td></td></tr> 
+	</table>
+		
+	</div>
+</div>
+	<script type="text/worker">
+	
+	
+
+
+on("change:strength change:dexterity change:endurance change:intelligence change:education change:social", function(eventInfo) {
+    getAttrs(["strength", "dexterity", "endurance", "intelligence", "education", "social"], function(values) {
+        setAttrs({"upp":  Number(values.strength).toString(36).toUpperCase() +
+                    Number(values.dexterity).toString(36).toUpperCase() +
+                    Number(values.endurance).toString(36).toUpperCase() +
+                    Number(values.intelligence).toString(36).toUpperCase() +
+                    Number(values.education).toString(36).toUpperCase() +
+                    Number(values.social).toString(36).toUpperCase()
+        }); 
+    });
+});
+
+
+on("change:armor", function(eventInfo) {
+	getAttrs(["armor"], function(values) {
+		armordata = {
+			"Nothing": {
+				"armor_hands": 1,
+				"armor_claws": 3,
+				"armor_teeth": 2,
+				"armor_horns": 2,
+				"armor_hooves": 3,
+				"armor_stinger": 4,
+				"armor_thrasher": 7,
+				"armor_club": 0,
+				"armor_dagger": 0,
+				"armor_blade": 1,
+				"armor_foil": 2,
+				"armor_cutlass": 4,
+				"armor_sword": 3,
+				"armor_broadsword": 5,
+				"armor_bayonet": 2,
+				"armor_spear": 1,
+				"armor_halberd": 4,
+				"armor_pike": 1,
+				"armor_cudgel": 0,
+				"armor_bodypistol": 0,
+				"armor_automaticpistol": 1,
+				"armor_revolver": 1,
+				"armor_carbine": 2,
+				"armor_rifle": 3,
+				"armor_automaticrifle": 6,
+				"armor_shotgun": 5,
+				"armor_submachinegun": 5,
+				"armor_lasercarbine": 2,
+				"armor_laserrifle": 3,
+				},
+			"Jack": {
+				"armor_hands": -1,
+				"armor_claws": 0,
+				"armor_teeth": 1,
+				"armor_horns": 1,
+				"armor_hooves": 3,
+				"armor_stinger": 3,
+				"armor_thrasher": 7,
+				"armor_club": 0,
+				"armor_dagger": -1,
+				"armor_blade": 0,
+				"armor_foil": 0,
+				"armor_cutlass": 3,
+				"armor_sword": 3,
+				"armor_broadsword": 5,
+				"armor_bayonet": 1,
+				"armor_spear": 0,
+				"armor_halberd": 3,
+				"armor_pike": 0,
+				"armor_cudgel": 0,
+				"armor_bodypistol": 0,
+				"armor_automaticpistol": 1,
+				"armor_revolver": 1,
+				"armor_carbine": 2,
+				"armor_rifle": 3,
+				"armor_automaticrifle": 6,
+				"armor_shotgun": 5,
+				"armor_submachinegun": 5,
+				"armor_lasercarbine": 2,
+				"armor_laserrifle": 3,
+				},
+			"Mesh": {
+				"armor_hands": -4,
+				"armor_claws": 0,
+				"armor_teeth": -1,
+				"armor_horns": 0,
+				"armor_hooves": 2,
+				"armor_stinger": 0,
+				"armor_thrasher": 4,
+				"armor_club": -2,
+				"armor_dagger": -4,
+				"armor_blade": -4,
+				"armor_foil": -4,
+				"armor_cutlass": -2,
+				"armor_sword": -3,
+				"armor_broadsword": 1,
+				"armor_bayonet": 0,
+				"armor_spear": -2,
+				"armor_halberd": -2,
+				"armor_pike": -2,
+				"armor_cudgel": -2,
+				"armor_bodypistol": -2,
+				"armor_automaticpistol": -1,
+				"armor_revolver": -1,
+				"armor_carbine": 0,
+				"armor_rifle": 0,
+				"armor_automaticrifle": 2,
+				"armor_shotgun": -1,
+				"armor_submachinegun": 0,
+				"armor_lasercarbine": 1,
+				"armor_laserrifle": 2,
+				},
+			"Cloth": {
+				"armor_hands": -4,
+				"armor_claws": 1,
+				"armor_teeth": 0,
+				"armor_horns": -1,
+				"armor_hooves": 2,
+				"armor_stinger": 1,
+				"armor_thrasher": 4,
+				"armor_club": -3,
+				"armor_dagger": -4,
+				"armor_blade": -4,
+				"armor_foil": -3,
+				"armor_cutlass": -3,
+				"armor_sword": -3,
+				"armor_broadsword": 0,
+				"armor_bayonet": -1,
+				"armor_spear": -2,
+				"armor_halberd": -3,
+				"armor_pike": -2,
+				"armor_cudgel": -3,
+				"armor_bodypistol": -4,
+				"armor_automaticpistol": -3,
+				"armor_revolver": -3,
+				"armor_carbine": -3,
+				"armor_rifle": -2,
+				"armor_automaticrifle": -1,
+				"armor_shotgun": -3,
+				"armor_submachinegun": -3,
+				"armor_lasercarbine": 1,
+				"armor_laserrifle": 2,
+				},
+			"Reflec": {
+				"armor_hands": 0,
+				"armor_claws": -1,
+				"armor_teeth": -2,
+				"armor_horns": 2,
+				"armor_hooves": 3,
+				"armor_stinger": 2,
+				"armor_thrasher": 7,
+				"armor_club": 0,
+				"armor_dagger": 0,
+				"armor_blade": 1,
+				"armor_foil": 2,
+				"armor_cutlass": 4,
+				"armor_sword": 3,
+				"armor_broadsword": 5,
+				"armor_bayonet": 2,
+				"armor_spear": -1,
+				"armor_halberd": 4,
+				"armor_pike": -1,
+				"armor_cudgel": 0,
+				"armor_bodypistol": -4,
+				"armor_automaticpistol": 1,
+				"armor_revolver": 1,
+				"armor_carbine": 2,
+				"armor_rifle": 3,
+				"armor_automaticrifle": 6,
+				"armor_shotgun": 5,
+				"armor_submachinegun": 5,
+				"armor_lasercarbine": -8,
+				"armor_laserrifle": -8,
+				},
+			"Ablat": {
+				"armor_hands": -1,
+				"armor_claws": -3,
+				"armor_teeth": -4,
+				"armor_horns": -2,
+				"armor_hooves": 2,
+				"armor_stinger": 0,
+				"armor_thrasher": 4,
+				"armor_club": -2,
+				"armor_dagger": -2,
+				"armor_blade": -3,
+				"armor_foil": -2,
+				"armor_cutlass": -2,
+				"armor_sword": -2,
+				"armor_broadsword": 1,
+				"armor_bayonet": -2,
+				"armor_spear": -3,
+				"armor_halberd": -2,
+				"armor_pike": -3,
+				"armor_cudgel": -2,
+				"armor_bodypistol": -2,
+				"armor_automaticpistol": -1,
+				"armor_revolver": -1,
+				"armor_carbine": 1,
+				"armor_rifle": 1,
+				"armor_automaticrifle": 3,
+				"armor_shotgun": 2,
+				"armor_submachinegun": 2,
+				"armor_lasercarbine": -7,
+				"armor_laserrifle": -7,
+				},
+			"Combat Armor": {
+				"armor_hands": -6,
+				"armor_claws": -7,
+				"armor_teeth": -7,
+				"armor_horns": -5,
+				"armor_hooves": -6,
+				"armor_stinger": -6,
+				"armor_thrasher": 0,
+				"armor_club": -7,
+				"armor_dagger": -5,
+				"armor_blade": -5,
+				"armor_foil": -8,
+				"armor_cutlass": -6,
+				"armor_sword": -6,
+				"armor_broadsword": -4,
+				"armor_bayonet": -6,
+				"armor_spear": -6,
+				"armor_halberd": -5,
+				"armor_pike": -6,
+				"armor_cudgel": -7,
+				"armor_bodypistol": -7,
+				"armor_automaticpistol": -5,
+				"armor_revolver": -5,
+				"armor_carbine": -5,
+				"armor_rifle": -4,
+				"armor_automaticrifle": -3,
+				"armor_shotgun": -5,
+				"armor_submachinegun": -4,
+				"armor_lasercarbine": -6,
+				"armor_laserrifle": -6,
+				},
+			};
+		setAttrs(armordata[values.armor]);
+	});
+});
+
+on("change:currentweapon", function(eventInfo) {
+	getAttrs(["currentweapon"], function(values) {
+	    weapons = {
+"Hands" : {
+	"currentweapon_wounds": "1d6",
+	"currentweapon_close": 2,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 1,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 6,
+	"currentweapon_penaltydm": 2,
+	"currentweapon_bonuscutoff": 9,
+	"currentweapon_bonusdm": 1,
+	},
+"Claws" : {
+	"currentweapon_wounds": "1d6",
+	"currentweapon_close": 1,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 2,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 0,
+	"currentweapon_penaltydm": 0,
+	"currentweapon_bonuscutoff": 0,
+	"currentweapon_bonusdm": 0,
+	},
+"Teeth" : {
+	"currentweapon_wounds": "2d6",
+	"currentweapon_close": 2,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 0,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 0,
+	"currentweapon_penaltydm": 0,
+	"currentweapon_bonuscutoff": 0,
+	"currentweapon_bonusdm": 0,
+	},
+"Horns" : {
+	"currentweapon_wounds": "2d6",
+	"currentweapon_close": -1,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 1,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 0,
+	"currentweapon_penaltydm": 0,
+	"currentweapon_bonuscutoff": 0,
+	"currentweapon_bonusdm": 0,
+	},
+"Hooves" : {
+	"currentweapon_wounds": "2d6",
+	"currentweapon_close": -1,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 2,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 0,
+	"currentweapon_penaltydm": 0,
+	"currentweapon_bonuscutoff": 0,
+	"currentweapon_bonusdm": 0,
+	},
+"Stinger" : {
+	"currentweapon_wounds": "3d6",
+	"currentweapon_close": 4,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 2,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 0,
+	"currentweapon_penaltydm": 0,
+	"currentweapon_bonuscutoff": 0,
+	"currentweapon_bonusdm": 0,
+	},
+"Thrasher" : {
+	"currentweapon_wounds": "2d6",
+	"currentweapon_close": 5,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 1,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 0,
+	"currentweapon_penaltydm": 0,
+	"currentweapon_bonuscutoff": 0,
+	"currentweapon_bonusdm": 0,
+	},
+"Club" : {
+	"currentweapon_wounds": "2d6",
+	"currentweapon_close": 1,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 2,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 5,
+	"currentweapon_penaltydm": 4,
+	"currentweapon_bonuscutoff": 8,
+	"currentweapon_bonusdm": 2,
+	},
+"Dagger" : {
+	"currentweapon_wounds": "2d6",
+	"currentweapon_close": 1,
+	"currentweapon_medium": "no",
+	"currentweapon_short": -1,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 4,
+	"currentweapon_penaltydm": 2,
+	"currentweapon_bonuscutoff": 8,
+	"currentweapon_bonusdm": 2,
+	},
+"Blade" : {
+	"currentweapon_wounds": "2d6",
+	"currentweapon_close": 1,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 1,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 5,
+	"currentweapon_penaltydm": 2,
+	"currentweapon_bonuscutoff": 9,
+	"currentweapon_bonusdm": 1,
+	},
+"Foil" : {
+	"currentweapon_wounds": "1d6",
+	"currentweapon_close": -1,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 0,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 5,
+	"currentweapon_penaltydm": 1,
+	"currentweapon_bonuscutoff": 10,
+	"currentweapon_bonusdm": 1,
+	},
+"Cutlass" : {
+	"currentweapon_wounds": "2d6",
+	"currentweapon_close": -4,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 2,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 7,
+	"currentweapon_penaltydm": 2,
+	"currentweapon_bonuscutoff": 11,
+	"currentweapon_bonusdm": 2,
+	},
+"Sword" : {
+	"currentweapon_wounds": "2d6",
+	"currentweapon_close": -2,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 1,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 6,
+	"currentweapon_penaltydm": 2,
+	"currentweapon_bonuscutoff": 10,
+	"currentweapon_bonusdm": 1,
+	},
+"Broadsword" : {
+	"currentweapon_wounds": "4d6",
+	"currentweapon_close": -8,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 3,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 8,
+	"currentweapon_penaltydm": 4,
+	"currentweapon_bonuscutoff": 12,
+	"currentweapon_bonusdm": 2,
+	},
+"Bayonet" : {
+	"currentweapon_wounds": "3d6",
+	"currentweapon_close": -1,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 2,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 5,
+	"currentweapon_penaltydm": 2,
+	"currentweapon_bonuscutoff": 9,
+	"currentweapon_bonusdm": 2,
+	},
+"Spear" : {
+	"currentweapon_wounds": "2d6",
+	"currentweapon_close": -2,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 1,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 5,
+	"currentweapon_penaltydm": 1,
+	"currentweapon_bonuscutoff": 9,
+	"currentweapon_bonusdm": 2,
+	},
+"Halberd" : {
+	"currentweapon_wounds": "3d6",
+	"currentweapon_close": 0,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 1,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 6,
+	"currentweapon_penaltydm": 2,
+	"currentweapon_bonuscutoff": 10,
+	"currentweapon_bonusdm": 2,
+	},
+"Pike" : {
+	"currentweapon_wounds": "3d6",
+	"currentweapon_close": -4,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 4,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 7,
+	"currentweapon_penaltydm": 3,
+	"currentweapon_bonuscutoff": 10,
+	"currentweapon_bonusdm": 2,
+	},
+"Cudgel" : {
+	"currentweapon_wounds": "2d6",
+	"currentweapon_close": 0,
+	"currentweapon_medium": "no",
+	"currentweapon_short": 0,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "strength",
+	"currentweapon_penaltycutoff": 5,
+	"currentweapon_penaltydm": 1,
+	"currentweapon_bonuscutoff": 8,
+	"currentweapon_bonusdm": 2,
+	},
+"Body Pistol" : {
+	"currentweapon_wounds": "3d6",
+	"currentweapon_close": 2,
+	"currentweapon_medium": -6,
+	"currentweapon_short": 1,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": "no",
+	"currentweapon_stat": "dexterity",
+	"currentweapon_penaltycutoff": 8,
+	"currentweapon_penaltydm": 3,
+	"currentweapon_bonuscutoff": 11,
+	"currentweapon_bonusdm": 1,
+	},
+"Automatic Pistol" : {
+	"currentweapon_wounds": "3d6",
+	"currentweapon_close": 1,
+	"currentweapon_medium": -4,
+	"currentweapon_short": 2,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": -6,
+	"currentweapon_stat": "dexterity",
+	"currentweapon_penaltycutoff": 7,
+	"currentweapon_penaltydm": 2,
+	"currentweapon_bonuscutoff": 10,
+	"currentweapon_bonusdm": 1,
+	},
+"Revolver" : {
+	"currentweapon_wounds": "3d6",
+	"currentweapon_close": 1,
+	"currentweapon_medium": -3,
+	"currentweapon_short": 2,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": -5,
+	"currentweapon_stat": "dexterity",
+	"currentweapon_penaltycutoff": 7,
+	"currentweapon_penaltydm": 2,
+	"currentweapon_bonuscutoff": 9,
+	"currentweapon_bonusdm": 1,
+	},
+"Carbine" : {
+	"currentweapon_wounds": "3d6",
+	"currentweapon_close": -4,
+	"currentweapon_medium": -2,
+	"currentweapon_short": 1,
+	"currentweapon_verylong": -5,
+	"currentweapon_long": -4,
+	"currentweapon_stat": "dexterity",
+	"currentweapon_penaltycutoff": 5,
+	"currentweapon_penaltydm": 1,
+	"currentweapon_bonuscutoff": 9,
+	"currentweapon_bonusdm": 1,
+	},
+"Rifle" : {
+	"currentweapon_wounds": "3d6",
+	"currentweapon_close": -4,
+	"currentweapon_medium": 0,
+	"currentweapon_short": 1,
+	"currentweapon_verylong": -3,
+	"currentweapon_long": -1,
+	"currentweapon_stat": "dexterity",
+	"currentweapon_penaltycutoff": 6,
+	"currentweapon_penaltydm": 2,
+	"currentweapon_bonuscutoff": 8,
+	"currentweapon_bonusdm": 1,
+	},
+"Automatic Rifle" : {
+	"currentweapon_wounds": "3d6",
+	"currentweapon_close": -8,
+	"currentweapon_medium": 2,
+	"currentweapon_short": 0,
+	"currentweapon_verylong": -2,
+	"currentweapon_long": 1,
+	"currentweapon_stat": "dexterity",
+	"currentweapon_penaltycutoff": 7,
+	"currentweapon_penaltydm": 2,
+	"currentweapon_bonuscutoff": 10,
+	"currentweapon_bonusdm": 2,
+	},
+"Shotgun" : {
+	"currentweapon_wounds": "4d6",
+	"currentweapon_close": -8,
+	"currentweapon_medium": 3,
+	"currentweapon_short": 1,
+	"currentweapon_verylong": "no",
+	"currentweapon_long": -6,
+	"currentweapon_stat": "dexterity",
+	"currentweapon_penaltycutoff": 4,
+	"currentweapon_penaltydm": 1,
+	"currentweapon_bonuscutoff": 9,
+	"currentweapon_bonusdm": 1,
+	},
+"Submachinegun" : {
+	"currentweapon_wounds": "3d6",
+	"currentweapon_close": -4,
+	"currentweapon_medium": 3,
+	"currentweapon_short": 3,
+	"currentweapon_verylong": -9,
+	"currentweapon_long": -6,
+	"currentweapon_stat": "dexterity",
+	"currentweapon_penaltycutoff": 6,
+	"currentweapon_penaltydm": 2,
+	"currentweapon_bonuscutoff": 9,
+	"currentweapon_bonusdm": 2,
+	},
+"Laser Carbine" : {
+	"currentweapon_wounds": "4d6",
+	"currentweapon_close": -2,
+	"currentweapon_medium": 1,
+	"currentweapon_short": 1,
+	"currentweapon_verylong": 0,
+	"currentweapon_long": 1,
+	"currentweapon_stat": "dexterity",
+	"currentweapon_penaltycutoff": 6,
+	"currentweapon_penaltydm": 3,
+	"currentweapon_bonuscutoff": 10,
+	"currentweapon_bonusdm": 2,
+	},
+"Laser Rifle" : {
+	"currentweapon_wounds": "5d6",
+	"currentweapon_close": -4,
+	"currentweapon_medium": 2,
+	"currentweapon_short": 2,
+	"currentweapon_verylong": 1,
+	"currentweapon_long": 2,
+	"currentweapon_stat": "dexterity",
+	"currentweapon_penaltycutoff": 7,
+	"currentweapon_penaltydm": 3,
+	"currentweapon_bonuscutoff": 11,
+	"currentweapon_bonusdm": 2,
+	},
+
+
+
+	    };
+	    setAttrs(weapons[values.currentweapon]);
+	});
+});
+
+
+on("change:repeating_weapons:weapontype", function(eventInfo) {
+	getAttrs(["repeating_weapons_weapontype"], function(values) {
+		weapons = {
+"Hands" : {
+	"repeating_weapons_weaponwounds": "1d6",
+	"repeating_weapons_weaponclose": 2,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_brawling})*5)[UNTRAINED] + @{skill_brawling}[SKILL] + @{target|Attacking|armor_hands}[ARMOR] + ({{@{strength|max},0}>6}*2 - 2)[STR_PENALTY] + {{@{strength|max},0}>9}*1[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 1,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_brawling})*5)[UNTRAINED] + @{skill_brawling}[SKILL] + @{target|Attacking|armor_hands}[ARMOR] + ({{@{strength|max},0}>6}*2 - 2)[STR_PENALTY] + {{@{strength|max},0}>9}*1[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Claws" : {
+	"repeating_weapons_weaponwounds": "1d6",
+	"repeating_weapons_weaponclose": 1,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_claws})*5)[UNTRAINED] + @{skill_claws}[SKILL] + @{target|Attacking|armor_claws}[ARMOR] + ({{@{strength|max},0}>0}*0 - 0)[STR_PENALTY] + {{@{strength|max},0}>0}*0[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 2,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_claws})*5)[UNTRAINED] + @{skill_claws}[SKILL] + @{target|Attacking|armor_claws}[ARMOR] + ({{@{strength|max},0}>0}*0 - 0)[STR_PENALTY] + {{@{strength|max},0}>0}*0[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Teeth" : {
+	"repeating_weapons_weaponwounds": "2d6",
+	"repeating_weapons_weaponclose": 2,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_teeth})*5)[UNTRAINED] + @{skill_teeth}[SKILL] + @{target|Attacking|armor_teeth}[ARMOR] + ({{@{strength|max},0}>0}*0 - 0)[STR_PENALTY] + {{@{strength|max},0}>0}*0[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 0,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_teeth})*5)[UNTRAINED] + @{skill_teeth}[SKILL] + @{target|Attacking|armor_teeth}[ARMOR] + ({{@{strength|max},0}>0}*0 - 0)[STR_PENALTY] + {{@{strength|max},0}>0}*0[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Horns" : {
+	"repeating_weapons_weaponwounds": "2d6",
+	"repeating_weapons_weaponclose": -1,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_horns})*5)[UNTRAINED] + @{skill_horns}[SKILL] + @{target|Attacking|armor_horns}[ARMOR] + ({{@{strength|max},0}>0}*0 - 0)[STR_PENALTY] + {{@{strength|max},0}>0}*0[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 1,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_horns})*5)[UNTRAINED] + @{skill_horns}[SKILL] + @{target|Attacking|armor_horns}[ARMOR] + ({{@{strength|max},0}>0}*0 - 0)[STR_PENALTY] + {{@{strength|max},0}>0}*0[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Hooves" : {
+	"repeating_weapons_weaponwounds": "2d6",
+	"repeating_weapons_weaponclose": -1,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_hooves})*5)[UNTRAINED] + @{skill_hooves}[SKILL] + @{target|Attacking|armor_hooves}[ARMOR] + ({{@{strength|max},0}>0}*0 - 0)[STR_PENALTY] + {{@{strength|max},0}>0}*0[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 2,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_hooves})*5)[UNTRAINED] + @{skill_hooves}[SKILL] + @{target|Attacking|armor_hooves}[ARMOR] + ({{@{strength|max},0}>0}*0 - 0)[STR_PENALTY] + {{@{strength|max},0}>0}*0[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Stinger" : {
+	"repeating_weapons_weaponwounds": "3d6",
+	"repeating_weapons_weaponclose": 4,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_stinger})*5)[UNTRAINED] + @{skill_stinger}[SKILL] + @{target|Attacking|armor_stinger}[ARMOR] + ({{@{strength|max},0}>0}*0 - 0)[STR_PENALTY] + {{@{strength|max},0}>0}*0[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 2,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_stinger})*5)[UNTRAINED] + @{skill_stinger}[SKILL] + @{target|Attacking|armor_stinger}[ARMOR] + ({{@{strength|max},0}>0}*0 - 0)[STR_PENALTY] + {{@{strength|max},0}>0}*0[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Thrasher" : {
+	"repeating_weapons_weaponwounds": "2d6",
+	"repeating_weapons_weaponclose": 5,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_thrasher})*5)[UNTRAINED] + @{skill_thrasher}[SKILL] + @{target|Attacking|armor_thrasher}[ARMOR] + ({{@{strength|max},0}>0}*0 - 0)[STR_PENALTY] + {{@{strength|max},0}>0}*0[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 1,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_thrasher})*5)[UNTRAINED] + @{skill_thrasher}[SKILL] + @{target|Attacking|armor_thrasher}[ARMOR] + ({{@{strength|max},0}>0}*0 - 0)[STR_PENALTY] + {{@{strength|max},0}>0}*0[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Club" : {
+	"repeating_weapons_weaponwounds": "2d6",
+	"repeating_weapons_weaponclose": 1,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_brawling})*5)[UNTRAINED] + @{skill_brawling}[SKILL] + @{target|Attacking|armor_club}[ARMOR] + ({{@{strength|max},0}>5}*4 - 4)[STR_PENALTY] + {{@{strength|max},0}>8}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 2,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_brawling})*5)[UNTRAINED] + @{skill_brawling}[SKILL] + @{target|Attacking|armor_club}[ARMOR] + ({{@{strength|max},0}>5}*4 - 4)[STR_PENALTY] + {{@{strength|max},0}>8}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Dagger" : {
+	"repeating_weapons_weaponwounds": "2d6",
+	"repeating_weapons_weaponclose": 1,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_dagger})*5)[UNTRAINED] + @{skill_dagger}[SKILL] + @{target|Attacking|armor_dagger}[ARMOR] + ({{@{strength|max},0}>4}*2 - 2)[STR_PENALTY] + {{@{strength|max},0}>8}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": -1,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_dagger})*5)[UNTRAINED] + @{skill_dagger}[SKILL] + @{target|Attacking|armor_dagger}[ARMOR] + ({{@{strength|max},0}>4}*2 - 2)[STR_PENALTY] + {{@{strength|max},0}>8}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Blade" : {
+	"repeating_weapons_weaponwounds": "2d6",
+	"repeating_weapons_weaponclose": 1,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_blade})*5)[UNTRAINED] + @{skill_blade}[SKILL] + @{target|Attacking|armor_blade}[ARMOR] + ({{@{strength|max},0}>5}*2 - 2)[STR_PENALTY] + {{@{strength|max},0}>9}*1[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 1,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_blade})*5)[UNTRAINED] + @{skill_blade}[SKILL] + @{target|Attacking|armor_blade}[ARMOR] + ({{@{strength|max},0}>5}*2 - 2)[STR_PENALTY] + {{@{strength|max},0}>9}*1[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Foil" : {
+	"repeating_weapons_weaponwounds": "1d6",
+	"repeating_weapons_weaponclose": -1,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_foil})*5)[UNTRAINED] + @{skill_foil}[SKILL] + @{target|Attacking|armor_foil}[ARMOR] + ({{@{strength|max},0}>5}*1 - 1)[STR_PENALTY] + {{@{strength|max},0}>10}*1[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 0,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_foil})*5)[UNTRAINED] + @{skill_foil}[SKILL] + @{target|Attacking|armor_foil}[ARMOR] + ({{@{strength|max},0}>5}*1 - 1)[STR_PENALTY] + {{@{strength|max},0}>10}*1[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Cutlass" : {
+	"repeating_weapons_weaponwounds": "2d6",
+	"repeating_weapons_weaponclose": -4,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_cutlass})*5)[UNTRAINED] + @{skill_cutlass}[SKILL] + @{target|Attacking|armor_cutlass}[ARMOR] + ({{@{strength|max},0}>7}*2 - 2)[STR_PENALTY] + {{@{strength|max},0}>11}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 2,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_cutlass})*5)[UNTRAINED] + @{skill_cutlass}[SKILL] + @{target|Attacking|armor_cutlass}[ARMOR] + ({{@{strength|max},0}>7}*2 - 2)[STR_PENALTY] + {{@{strength|max},0}>11}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Sword" : {
+	"repeating_weapons_weaponwounds": "2d6",
+	"repeating_weapons_weaponclose": -2,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_sword})*5)[UNTRAINED] + @{skill_sword}[SKILL] + @{target|Attacking|armor_sword}[ARMOR] + ({{@{strength|max},0}>6}*2 - 2)[STR_PENALTY] + {{@{strength|max},0}>10}*1[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 1,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_sword})*5)[UNTRAINED] + @{skill_sword}[SKILL] + @{target|Attacking|armor_sword}[ARMOR] + ({{@{strength|max},0}>6}*2 - 2)[STR_PENALTY] + {{@{strength|max},0}>10}*1[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Broadsword" : {
+	"repeating_weapons_weaponwounds": "4d6",
+	"repeating_weapons_weaponclose": -8,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_broadsword})*5)[UNTRAINED] + @{skill_broadsword}[SKILL] + @{target|Attacking|armor_broadsword}[ARMOR] + ({{@{strength|max},0}>8}*4 - 4)[STR_PENALTY] + {{@{strength|max},0}>12}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 3,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_broadsword})*5)[UNTRAINED] + @{skill_broadsword}[SKILL] + @{target|Attacking|armor_broadsword}[ARMOR] + ({{@{strength|max},0}>8}*4 - 4)[STR_PENALTY] + {{@{strength|max},0}>12}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Bayonet" : {
+	"repeating_weapons_weaponwounds": "3d6",
+	"repeating_weapons_weaponclose": -1,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_bayonet})*5)[UNTRAINED] + @{skill_bayonet}[SKILL] + @{target|Attacking|armor_bayonet}[ARMOR] + ({{@{strength|max},0}>5}*2 - 2)[STR_PENALTY] + {{@{strength|max},0}>9}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 2,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_bayonet})*5)[UNTRAINED] + @{skill_bayonet}[SKILL] + @{target|Attacking|armor_bayonet}[ARMOR] + ({{@{strength|max},0}>5}*2 - 2)[STR_PENALTY] + {{@{strength|max},0}>9}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Spear" : {
+	"repeating_weapons_weaponwounds": "2d6",
+	"repeating_weapons_weaponclose": -2,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_spear})*5)[UNTRAINED] + @{skill_spear}[SKILL] + @{target|Attacking|armor_spear}[ARMOR] + ({{@{strength|max},0}>5}*1 - 1)[STR_PENALTY] + {{@{strength|max},0}>9}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 1,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_spear})*5)[UNTRAINED] + @{skill_spear}[SKILL] + @{target|Attacking|armor_spear}[ARMOR] + ({{@{strength|max},0}>5}*1 - 1)[STR_PENALTY] + {{@{strength|max},0}>9}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Halberd" : {
+	"repeating_weapons_weaponwounds": "3d6",
+	"repeating_weapons_weaponclose": 0,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_halberd})*5)[UNTRAINED] + @{skill_halberd}[SKILL] + @{target|Attacking|armor_halberd}[ARMOR] + ({{@{strength|max},0}>6}*2 - 2)[STR_PENALTY] + {{@{strength|max},0}>10}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 1,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_halberd})*5)[UNTRAINED] + @{skill_halberd}[SKILL] + @{target|Attacking|armor_halberd}[ARMOR] + ({{@{strength|max},0}>6}*2 - 2)[STR_PENALTY] + {{@{strength|max},0}>10}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Pike" : {
+	"repeating_weapons_weaponwounds": "3d6",
+	"repeating_weapons_weaponclose": -4,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_pike})*5)[UNTRAINED] + @{skill_pike}[SKILL] + @{target|Attacking|armor_pike}[ARMOR] + ({{@{strength|max},0}>7}*3 - 3)[STR_PENALTY] + {{@{strength|max},0}>10}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 4,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_pike})*5)[UNTRAINED] + @{skill_pike}[SKILL] + @{target|Attacking|armor_pike}[ARMOR] + ({{@{strength|max},0}>7}*3 - 3)[STR_PENALTY] + {{@{strength|max},0}>10}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Cudgel" : {
+	"repeating_weapons_weaponwounds": "2d6",
+	"repeating_weapons_weaponclose": 0,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_cudgel})*5)[UNTRAINED] + @{skill_cudgel}[SKILL] + @{target|Attacking|armor_cudgel}[ARMOR] + ({{@{strength|max},0}>5}*1 - 1)[STR_PENALTY] + {{@{strength|max},0}>8}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": "no",
+	"repeating_weapons_weaponmediumroll": "",
+	"repeating_weapons_weaponshort": 0,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_cudgel})*5)[UNTRAINED] + @{skill_cudgel}[SKILL] + @{target|Attacking|armor_cudgel}[ARMOR] + ({{@{strength|max},0}>5}*1 - 1)[STR_PENALTY] + {{@{strength|max},0}>8}*2[STR_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Body Pistol" : {
+	"repeating_weapons_weaponwounds": "3d6",
+	"repeating_weapons_weaponclose": 2,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_bodypistol})*5)[UNTRAINED] + @{skill_bodypistol}[SKILL] + @{target|Attacking|armor_bodypistol}[ARMOR] + ({{@{dexterity|max},0}>8}*3 - 3)[DEX_PENALTY] + {{@{dexterity|max},0}>11}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": -6,
+	"repeating_weapons_weaponmediumroll": "&{template:default} {{name=Medium @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponmedium}[RANGE] - ((1-@{trained_bodypistol})*5)[UNTRAINED] + @{skill_bodypistol}[SKILL] + @{target|Attacking|armor_bodypistol}[ARMOR] + ({{@{dexterity|max},0}>8}*3 - 3)[DEX_PENALTY] + {{@{dexterity|max},0}>11}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponshort": 1,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_bodypistol})*5)[UNTRAINED] + @{skill_bodypistol}[SKILL] + @{target|Attacking|armor_bodypistol}[ARMOR] + ({{@{dexterity|max},0}>8}*3 - 3)[DEX_PENALTY] + {{@{dexterity|max},0}>11}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": "no",
+	"repeating_weapons_weaponlongroll": "",
+	},
+"Automatic Pistol" : {
+	"repeating_weapons_weaponwounds": "3d6",
+	"repeating_weapons_weaponclose": 1,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_automaticpistol})*5)[UNTRAINED] + @{skill_automaticpistol}[SKILL] + @{target|Attacking|armor_automaticpistol}[ARMOR] + ({{@{dexterity|max},0}>7}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>10}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": -4,
+	"repeating_weapons_weaponmediumroll": "&{template:default} {{name=Medium @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponmedium}[RANGE] - ((1-@{trained_automaticpistol})*5)[UNTRAINED] + @{skill_automaticpistol}[SKILL] + @{target|Attacking|armor_automaticpistol}[ARMOR] + ({{@{dexterity|max},0}>7}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>10}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponshort": 2,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_automaticpistol})*5)[UNTRAINED] + @{skill_automaticpistol}[SKILL] + @{target|Attacking|armor_automaticpistol}[ARMOR] + ({{@{dexterity|max},0}>7}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>10}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": -6,
+	"repeating_weapons_weaponlongroll": "&{template:default} {{name=Long @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponlong}[RANGE] - ((1-@{trained_automaticpistol})*5)[UNTRAINED] + @{skill_automaticpistol}[SKILL] + @{target|Attacking|armor_automaticpistol}[ARMOR] + ({{@{dexterity|max},0}>7}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>10}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	},
+"Revolver" : {
+	"repeating_weapons_weaponwounds": "3d6",
+	"repeating_weapons_weaponclose": 1,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_revolver})*5)[UNTRAINED] + @{skill_revolver}[SKILL] + @{target|Attacking|armor_revolver}[ARMOR] + ({{@{dexterity|max},0}>7}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": -3,
+	"repeating_weapons_weaponmediumroll": "&{template:default} {{name=Medium @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponmedium}[RANGE] - ((1-@{trained_revolver})*5)[UNTRAINED] + @{skill_revolver}[SKILL] + @{target|Attacking|armor_revolver}[ARMOR] + ({{@{dexterity|max},0}>7}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponshort": 2,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_revolver})*5)[UNTRAINED] + @{skill_revolver}[SKILL] + @{target|Attacking|armor_revolver}[ARMOR] + ({{@{dexterity|max},0}>7}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": -5,
+	"repeating_weapons_weaponlongroll": "&{template:default} {{name=Long @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponlong}[RANGE] - ((1-@{trained_revolver})*5)[UNTRAINED] + @{skill_revolver}[SKILL] + @{target|Attacking|armor_revolver}[ARMOR] + ({{@{dexterity|max},0}>7}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	},
+"Carbine" : {
+	"repeating_weapons_weaponwounds": "3d6",
+	"repeating_weapons_weaponclose": -4,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_carbine})*5)[UNTRAINED] + @{skill_carbine}[SKILL] + @{target|Attacking|armor_carbine}[ARMOR] + ({{@{dexterity|max},0}>5}*1 - 1)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": -2,
+	"repeating_weapons_weaponmediumroll": "&{template:default} {{name=Medium @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponmedium}[RANGE] - ((1-@{trained_carbine})*5)[UNTRAINED] + @{skill_carbine}[SKILL] + @{target|Attacking|armor_carbine}[ARMOR] + ({{@{dexterity|max},0}>5}*1 - 1)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponshort": 1,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_carbine})*5)[UNTRAINED] + @{skill_carbine}[SKILL] + @{target|Attacking|armor_carbine}[ARMOR] + ({{@{dexterity|max},0}>5}*1 - 1)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": -5,
+	"repeating_weapons_weaponverylongroll": "&{template:default} {{name=Verylong @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponverylong}[RANGE] - ((1-@{trained_carbine})*5)[UNTRAINED] + @{skill_carbine}[SKILL] + @{target|Attacking|armor_carbine}[ARMOR] + ({{@{dexterity|max},0}>5}*1 - 1)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponlong": -4,
+	"repeating_weapons_weaponlongroll": "&{template:default} {{name=Long @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponlong}[RANGE] - ((1-@{trained_carbine})*5)[UNTRAINED] + @{skill_carbine}[SKILL] + @{target|Attacking|armor_carbine}[ARMOR] + ({{@{dexterity|max},0}>5}*1 - 1)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	},
+"Rifle" : {
+	"repeating_weapons_weaponwounds": "3d6",
+	"repeating_weapons_weaponclose": -4,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_rifle})*5)[UNTRAINED] + @{skill_rifle}[SKILL] + @{target|Attacking|armor_rifle}[ARMOR] + ({{@{dexterity|max},0}>6}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>8}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": 0,
+	"repeating_weapons_weaponmediumroll": "&{template:default} {{name=Medium @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponmedium}[RANGE] - ((1-@{trained_rifle})*5)[UNTRAINED] + @{skill_rifle}[SKILL] + @{target|Attacking|armor_rifle}[ARMOR] + ({{@{dexterity|max},0}>6}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>8}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponshort": 1,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_rifle})*5)[UNTRAINED] + @{skill_rifle}[SKILL] + @{target|Attacking|armor_rifle}[ARMOR] + ({{@{dexterity|max},0}>6}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>8}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": -3,
+	"repeating_weapons_weaponverylongroll": "&{template:default} {{name=Verylong @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponverylong}[RANGE] - ((1-@{trained_rifle})*5)[UNTRAINED] + @{skill_rifle}[SKILL] + @{target|Attacking|armor_rifle}[ARMOR] + ({{@{dexterity|max},0}>6}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>8}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponlong": -1,
+	"repeating_weapons_weaponlongroll": "&{template:default} {{name=Long @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponlong}[RANGE] - ((1-@{trained_rifle})*5)[UNTRAINED] + @{skill_rifle}[SKILL] + @{target|Attacking|armor_rifle}[ARMOR] + ({{@{dexterity|max},0}>6}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>8}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	},
+"Automatic Rifle" : {
+	"repeating_weapons_weaponwounds": "3d6",
+	"repeating_weapons_weaponclose": -8,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_automaticrifle})*5)[UNTRAINED] + @{skill_automaticrifle}[SKILL] + @{target|Attacking|armor_automaticrifle}[ARMOR] + ({{@{dexterity|max},0}>7}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>10}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": 2,
+	"repeating_weapons_weaponmediumroll": "&{template:default} {{name=Medium @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponmedium}[RANGE] - ((1-@{trained_automaticrifle})*5)[UNTRAINED] + @{skill_automaticrifle}[SKILL] + @{target|Attacking|armor_automaticrifle}[ARMOR] + ({{@{dexterity|max},0}>7}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>10}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponshort": 0,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_automaticrifle})*5)[UNTRAINED] + @{skill_automaticrifle}[SKILL] + @{target|Attacking|armor_automaticrifle}[ARMOR] + ({{@{dexterity|max},0}>7}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>10}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": -2,
+	"repeating_weapons_weaponverylongroll": "&{template:default} {{name=Verylong @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponverylong}[RANGE] - ((1-@{trained_automaticrifle})*5)[UNTRAINED] + @{skill_automaticrifle}[SKILL] + @{target|Attacking|armor_automaticrifle}[ARMOR] + ({{@{dexterity|max},0}>7}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>10}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponlong": 1,
+	"repeating_weapons_weaponlongroll": "&{template:default} {{name=Long @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponlong}[RANGE] - ((1-@{trained_automaticrifle})*5)[UNTRAINED] + @{skill_automaticrifle}[SKILL] + @{target|Attacking|armor_automaticrifle}[ARMOR] + ({{@{dexterity|max},0}>7}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>10}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	},
+"Shotgun" : {
+	"repeating_weapons_weaponwounds": "4d6",
+	"repeating_weapons_weaponclose": -8,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_shotgun})*5)[UNTRAINED] + @{skill_shotgun}[SKILL] + @{target|Attacking|armor_shotgun}[ARMOR] + ({{@{dexterity|max},0}>4}*1 - 1)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": 3,
+	"repeating_weapons_weaponmediumroll": "&{template:default} {{name=Medium @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponmedium}[RANGE] - ((1-@{trained_shotgun})*5)[UNTRAINED] + @{skill_shotgun}[SKILL] + @{target|Attacking|armor_shotgun}[ARMOR] + ({{@{dexterity|max},0}>4}*1 - 1)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponshort": 1,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_shotgun})*5)[UNTRAINED] + @{skill_shotgun}[SKILL] + @{target|Attacking|armor_shotgun}[ARMOR] + ({{@{dexterity|max},0}>4}*1 - 1)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": "no",
+	"repeating_weapons_weaponverylongroll": "",
+	"repeating_weapons_weaponlong": -6,
+	"repeating_weapons_weaponlongroll": "&{template:default} {{name=Long @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponlong}[RANGE] - ((1-@{trained_shotgun})*5)[UNTRAINED] + @{skill_shotgun}[SKILL] + @{target|Attacking|armor_shotgun}[ARMOR] + ({{@{dexterity|max},0}>4}*1 - 1)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*1[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	},
+"Submachinegun" : {
+	"repeating_weapons_weaponwounds": "3d6",
+	"repeating_weapons_weaponclose": -4,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_submachinegun})*5)[UNTRAINED] + @{skill_submachinegun}[SKILL] + @{target|Attacking|armor_submachinegun}[ARMOR] + ({{@{dexterity|max},0}>6}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": 3,
+	"repeating_weapons_weaponmediumroll": "&{template:default} {{name=Medium @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponmedium}[RANGE] - ((1-@{trained_submachinegun})*5)[UNTRAINED] + @{skill_submachinegun}[SKILL] + @{target|Attacking|armor_submachinegun}[ARMOR] + ({{@{dexterity|max},0}>6}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponshort": 3,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_submachinegun})*5)[UNTRAINED] + @{skill_submachinegun}[SKILL] + @{target|Attacking|armor_submachinegun}[ARMOR] + ({{@{dexterity|max},0}>6}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": -9,
+	"repeating_weapons_weaponverylongroll": "&{template:default} {{name=Verylong @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponverylong}[RANGE] - ((1-@{trained_submachinegun})*5)[UNTRAINED] + @{skill_submachinegun}[SKILL] + @{target|Attacking|armor_submachinegun}[ARMOR] + ({{@{dexterity|max},0}>6}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponlong": -6,
+	"repeating_weapons_weaponlongroll": "&{template:default} {{name=Long @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponlong}[RANGE] - ((1-@{trained_submachinegun})*5)[UNTRAINED] + @{skill_submachinegun}[SKILL] + @{target|Attacking|armor_submachinegun}[ARMOR] + ({{@{dexterity|max},0}>6}*2 - 2)[DEX_PENALTY] + {{@{dexterity|max},0}>9}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	},
+"Laser Carbine" : {
+	"repeating_weapons_weaponwounds": "4d6",
+	"repeating_weapons_weaponclose": -2,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_lasercarbine})*5)[UNTRAINED] + @{skill_lasercarbine}[SKILL] + @{target|Attacking|armor_lasercarbine}[ARMOR] + ({{@{dexterity|max},0}>6}*3 - 3)[DEX_PENALTY] + {{@{dexterity|max},0}>10}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": 1,
+	"repeating_weapons_weaponmediumroll": "&{template:default} {{name=Medium @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponmedium}[RANGE] - ((1-@{trained_lasercarbine})*5)[UNTRAINED] + @{skill_lasercarbine}[SKILL] + @{target|Attacking|armor_lasercarbine}[ARMOR] + ({{@{dexterity|max},0}>6}*3 - 3)[DEX_PENALTY] + {{@{dexterity|max},0}>10}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponshort": 1,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_lasercarbine})*5)[UNTRAINED] + @{skill_lasercarbine}[SKILL] + @{target|Attacking|armor_lasercarbine}[ARMOR] + ({{@{dexterity|max},0}>6}*3 - 3)[DEX_PENALTY] + {{@{dexterity|max},0}>10}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": 0,
+	"repeating_weapons_weaponverylongroll": "&{template:default} {{name=Verylong @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponverylong}[RANGE] - ((1-@{trained_lasercarbine})*5)[UNTRAINED] + @{skill_lasercarbine}[SKILL] + @{target|Attacking|armor_lasercarbine}[ARMOR] + ({{@{dexterity|max},0}>6}*3 - 3)[DEX_PENALTY] + {{@{dexterity|max},0}>10}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponlong": 1,
+	"repeating_weapons_weaponlongroll": "&{template:default} {{name=Long @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponlong}[RANGE] - ((1-@{trained_lasercarbine})*5)[UNTRAINED] + @{skill_lasercarbine}[SKILL] + @{target|Attacking|armor_lasercarbine}[ARMOR] + ({{@{dexterity|max},0}>6}*3 - 3)[DEX_PENALTY] + {{@{dexterity|max},0}>10}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	},
+"Laser Rifle" : {
+	"repeating_weapons_weaponwounds": "5d6",
+	"repeating_weapons_weaponclose": -4,
+	"repeating_weapons_weaponcloseroll": "&{template:default} {{name=Close @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponclose}[RANGE] - ((1-@{trained_laserrifle})*5)[UNTRAINED] + @{skill_laserrifle}[SKILL] + @{target|Attacking|armor_laserrifle}[ARMOR] + ({{@{dexterity|max},0}>7}*3 - 3)[DEX_PENALTY] + {{@{dexterity|max},0}>11}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponmedium": 2,
+	"repeating_weapons_weaponmediumroll": "&{template:default} {{name=Medium @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponmedium}[RANGE] - ((1-@{trained_laserrifle})*5)[UNTRAINED] + @{skill_laserrifle}[SKILL] + @{target|Attacking|armor_laserrifle}[ARMOR] + ({{@{dexterity|max},0}>7}*3 - 3)[DEX_PENALTY] + {{@{dexterity|max},0}>11}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponshort": 2,
+	"repeating_weapons_weaponshortroll": "&{template:default} {{name=Short @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponshort}[RANGE] - ((1-@{trained_laserrifle})*5)[UNTRAINED] + @{skill_laserrifle}[SKILL] + @{target|Attacking|armor_laserrifle}[ARMOR] + ({{@{dexterity|max},0}>7}*3 - 3)[DEX_PENALTY] + {{@{dexterity|max},0}>11}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponverylong": 1,
+	"repeating_weapons_weaponverylongroll": "&{template:default} {{name=Verylong @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponverylong}[RANGE] - ((1-@{trained_laserrifle})*5)[UNTRAINED] + @{skill_laserrifle}[SKILL] + @{target|Attacking|armor_laserrifle}[ARMOR] + ({{@{dexterity|max},0}>7}*3 - 3)[DEX_PENALTY] + {{@{dexterity|max},0}>11}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	"repeating_weapons_weaponlong": 2,
+	"repeating_weapons_weaponlongroll": "&{template:default} {{name=Long @{weapontype} at @{target|Attacking|character_name}}} {{attack=[[2d6 + @{weaponlong}[RANGE] - ((1-@{trained_laserrifle})*5)[UNTRAINED] + @{skill_laserrifle}[SKILL] + @{target|Attacking|armor_laserrifle}[ARMOR] + ({{@{dexterity|max},0}>7}*3 - 3)[DEX_PENALTY] + {{@{dexterity|max},0}>11}*2[DEX_BONUS] ]]}} {{damage=[[@{weaponwounds}]]}}",
+	},
+
+
+
+		};
+		update = weapons[values.repeating_weapons_weapontype];
+		if (update != undefined) {
+			setAttrs(update);
+		}
+	});
+});
+
+
+
+
+	</script>
