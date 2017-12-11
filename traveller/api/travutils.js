@@ -386,6 +386,25 @@ var TravUtils = TravUtils || (function() {
         }
     };
 
+    var NpcReactions = function(msg) {
+        var reactions = ["Violent. Immediate attack.", "Hostile. Attacks on 5+.", "Hostile. Attacks on 8+.", "Hostile. May attack.", "Unreceptive.", "Non-committal.", "Interested.", "Intrigued.", "Responsive.", "Enthusiastic", "Genuinely friendly."];
+        var params = msg.content.split(" ");
+        var termMod = Number(params[1]);
+        var popMod = Number(params[2]);
+        var roll = randomInteger(6) + randomInteger(6) + termMod + popMod;
+        if (roll < 2) {
+            roll = 2;
+        } else if (roll > 12) {
+            roll = 12;
+        }
+        var reaction = reactions[roll-2];
+        sendChat(msg.who, "/w gm NPC Reactions: " + reaction);
+        if (reaction.indexOf("Attacks on ") != -1) {
+            sendChat(msg.who, "/w gm [[2d6]])");
+        }
+        log(reaction);
+    };
+
     var RegisterEvents = function() {
         on("change:graphic:bar1_value", function(obj, prev) {
             CheckWounds(obj);
@@ -421,7 +440,9 @@ var TravUtils = TravUtils || (function() {
                 TradeSpecAvailable(msg);
             } else if (msg.content.indexOf('!cargo_available') != -1) {
                 CargoPassengersAvailable(msg);
-            };
+            } else if (msg.content.indexOf("!npc_reaction") != -1) {
+                NpcReactions(msg);
+            }
         });        
     };
     
@@ -429,8 +450,10 @@ var TravUtils = TravUtils || (function() {
         CheckInstall: CheckInstall,
         RegisterEvents: RegisterEvents,
         loadInitialData: loadInitialData,
+        NpcReactions: NpcReactions,
     };
 }());
+
 
 
 on("ready",function(){
