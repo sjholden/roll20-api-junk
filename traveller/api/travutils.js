@@ -80,12 +80,16 @@ var TravUtils = TravUtils || (function() {
             _type: "handout",
             name: "SystemsData"
         });
-        handouts[0].get("notes", loadSystemsData);        
+        _.each(handouts, function(handout) {
+            handout.get("notes", loadSystemsData);
+        });
         var handouts = findObjs({                              
             _type: "handout",
             name: "TradeSpeculationData"
         });
-        handouts[0].get("notes", loadTradeSpecData);
+        _.each(handouts, function(handout) {
+            handout.get("notes", loadTradeSpecData);
+        });
     };
   
     var CheckWounds = function(obj) {
@@ -152,7 +156,7 @@ var TravUtils = TravUtils || (function() {
             attrIndexes.splice(index, 1);
         }
         var zeroCount = CheckWounds(token);
-        sendChat(msg.who, "&{template:default} {{name=First blood damage to " + token.get("name") + "}} {{damage=" + params[2] + "}} " + actions.join(" ") + " {{status=" + ["Just fine", "Knocked unconscious", "Seriously wounded", "Dead"][zeroCount] + "}}");
+        sendChat("First Blood Calculator", "&{template:default} {{name=First blood damage to " + token.get("name") + "}} {{damage=" + params[2] + "}} " + actions.join(" ") + " {{status=" + ["Just fine", "Knocked unconscious", "Seriously wounded", "Dead"][zeroCount] + "}}");
     };
 
     var Attack = function(msg) {
@@ -264,9 +268,9 @@ var TravUtils = TravUtils || (function() {
                 unitName = 'each';
                 suffix = ""
             }
-            sendChat(msg.who, "Trade good found in " + systemName + ": [[" + tradeItem['quantity'] + "]] " + suffix + " " + tradeItem['name'] + " at " + price.toString() +"Cr " + unitName);
+            sendChat("Trade Speculation", "Trade good found in " + systemName + ": [[" + tradeItem['quantity'] + "]] " + suffix + " " + tradeItem['name'] + " at " + price.toString() +"Cr " + unitName);
         } else {
-            sendChat(msg.who, "Unknown system: " + systemName);
+            sendChat("Trade Speculation", "Unknown system: " + systemName);
         }
     };
 
@@ -323,12 +327,12 @@ var TravUtils = TravUtils || (function() {
                     cargos.push(randomInteger(6));
                 }
                 cargos.sort(function (a, b) {return b - a;});
-                sendChat(msg.who, "Available from " + params[1] + " to " + params[2] + "\nPassengers: " + hp.toString() + " high, " + mp.toString() + " middle, " + lp.toString() + " low.\nCargos: " + cargos.join(", "));
+                sendChat("Cargo and Passengers", "Available from " + params[1] + " to " + params[2] + "\nPassengers: " + hp.toString() + " high, " + mp.toString() + " middle, " + lp.toString() + " low.\nCargos: " + cargos.join(", "));
             } else {
-                sendChat(msg.who, "Unknown system: " + params[2]);
+                sendChat("Cargo and Passengers", "Unknown system: " + params[2]);
             }
         } else {
-            sendChat(msg.who, "Unknown system: " + params[1]);
+            sendChat("Cargo and Passengers", "Unknown system: " + params[1]);
         }
     };
 
@@ -379,10 +383,10 @@ var TravUtils = TravUtils || (function() {
                     }
                     ship = ship + " and " + snallCraft[roll]; 
                 }
-                sendChat(msg.who, "/w gm Encounter at " + params[1] + ": " + ship)
+                sendChat("Starship Encounter", "/w gm Encounter at " + params[1] + ": " + ship)
             }            
         } else {
-            sendChat(msg.who, "/w gm Unknown system: " + params[1]);
+            sendChat("Starship Encounter", "/w gm Unknown system: " + params[1]);
         }
     };
 
@@ -398,11 +402,92 @@ var TravUtils = TravUtils || (function() {
             roll = 12;
         }
         var reaction = reactions[roll-2];
-        sendChat(msg.who, "/w gm NPC Reactions: " + reaction);
+        sendChat("NPC Reactions", "/w gm NPC Reactions: " + reaction);
         if (reaction.indexOf("Attacks on ") != -1) {
-            sendChat(msg.who, "/w gm [[2d6]])");
+            sendChat("NPC Reactions", "/w gm [[2d6]]");
         }
         log(reaction);
+    };
+
+    var RandomPersonEncounters = function(msg) {
+        var encounters = [
+            [
+                ["Peasants", 1, "", "Clubs and cudgels", ""],
+                ["Peasants", 2, "", "Clubs and cudgels", ""],
+                ["Workers", 2, "", "Clubs", ""],
+                ["Rowdies", 3, "", "Clubs", ""],
+                ["Thugs", 2, "", "Daggers", ""],
+                ["Riotous mob", 4, "", "Clubs and daggers", ""],
+            ],
+            [
+                ["Soldiers", 2, "", "Rifles and bayonets", "Cloth"],
+                ["Soldiers", 2, "Vehicle", "Carbines", "Mesh"],
+                ["Police patrol", 1, "Vehicle", "Automatic Pistols", "Cloth"],
+                ["Marines", 2, "Vehicle", "Carbines", "Mesh"],
+                ["Naval security troops", 3, "Vehicle", "Carbines", ""],
+                ["Soldiers on patrol", 2, "Vehicle", "SMGs", "Jack"],
+            ],
+            [
+                ["Adventurers", 1, "", "Swords", ""],
+                ["Noble with retinue", 2, "", "Foils", ""],
+                ["Hunters and guides", 2, "", "Rifles and spears", "Jack"],
+                ["Tourists", 2, "Vehicle", "Cameras", ""],
+                ["Researchers", 2, "Vehicle", "", ""],
+                ["Police patrol", 1, "Vehicle", "Revolvers", ""],
+            ],
+            [
+                ["Fugitives", 1, "", "Clubs", ""],
+                ["Fugitives", 2, "Vehicle", "Blades", "Jack"],
+                ["Fugitives", 3, "", "Revolvers", "Jack"],
+                ["Vigilantes", 2, "Vehicle", "Rifles and carbines", "Jack"],
+                ["Bandits", 3, "", "Swords and pistols", ""],
+                ["Ambushing brigands", 3, "", "Broadswords and pistols", "Cloth"],
+            ],
+            [
+                ["Merchant and employees", 1, "", "Daggers", ""],
+                ["Traders", 2, "Vehicle", "Blades", "="],
+                ["Religious group", 2, "", "", "="],
+                ["Beggars", 1, "Vehicle", "", ""],
+                ["Pilgrims", 5, "", "", "Jack"],
+                ["Guards", 3, "", "Halberds and daggers", "Jack"],
+            ],
+        ];
+        var additionalWeapons = [
+            ["Laser rifle", "Auto rifle", "-", "-", "-", "-"],
+            ["Shotgun", "Carbine", "Revolver", "-", "-", "-"],
+            ["Broadsword", "Sword", "Halberd", "Cutlass", "Foil", ""],
+        ];
+        var die1 = randomInteger(6);
+        var die2 = randomInteger(6);
+        if (die1 == 6) {
+            sendChat("Random Person Encounter", "/w gm encounter roll special " + die1.toString() + die2.toString());
+        } else {
+            var encounter = encounters[die1-1][die2-1];
+            var number = 0;
+            for (var i=0; i<encounter[1]; i++) {
+                number = number + randomInteger(6);
+            }
+            var vehicle = "";
+            if (encounter[2] == "Vehicle") {
+                vehicle = " with a vehicle";
+            }
+            var weapons = "";
+            if (encounter[3] != "") {
+                weapons = " armed with " + encounter[3];
+            }
+            var addWeapon = "-";
+            for (var i=0; i<additionalWeapons.length && addWeapon == "-"; i++) {
+                addWeapon = additionalWeapons[i][randomInteger(6)-1];
+            }
+            if (addWeapon != "") {
+                if (weapons != "") {
+                    weapons = weapons + " and";
+                }
+                weapons  = weapons + " one armed with " + addWeapon;
+            }
+            sendChat("Random Person Encounter", "/w gm [[" + encounter[1] + "d6]] " + encounter[0] + vehicle + weapons);
+        }
+        
     };
 
     var RegisterEvents = function() {
@@ -442,6 +527,8 @@ var TravUtils = TravUtils || (function() {
                 CargoPassengersAvailable(msg);
             } else if (msg.content.indexOf("!npc_reaction") != -1) {
                 NpcReactions(msg);
+            } else if (msg.content.indexOf("!random_person_encounter") != -1 ) {
+                RandomPersonEncounters(msg);
             }
         });        
     };
@@ -451,14 +538,15 @@ var TravUtils = TravUtils || (function() {
         RegisterEvents: RegisterEvents,
         loadInitialData: loadInitialData,
         NpcReactions: NpcReactions,
+        RandomPersonEncounters: RandomPersonEncounters,
     };
 }());
 
 
 
 on("ready",function(){
-	'use strict';
+    'use strict';
     TravUtils.CheckInstall();
-	TravUtils.RegisterEvents();
-	TravUtils.loadInitialData();
+    TravUtils.RegisterEvents();
+    TravUtils.loadInitialData();
 });
