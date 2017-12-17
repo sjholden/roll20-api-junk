@@ -413,6 +413,14 @@
 	
 	<div class="sheet-tab-content sheet-tab5">	
 		<div style="height: 50px"></div>
+	<h2>Task Rolls</h2>
+	<table>
+	    <tr>
+    	    <td><button name="roll_task_roll" type="roll" value="!utp_resolve @{character_id} ?{Skill|Admin,admin|Air/Raft,airraft|ATV,atv|Automatic Pistol,automaticpistol|Automatic Rifle,automaticrifle|Bayonet,bayonet|Blade,blade|Body Pistol,bodypistol|Brawling,brawling|Bribery,bribery|Broadsword,broadsword|Carbine,carbine|Computer,computer|Cudgel,cudgel|Cutlass,cutlass|Dagger,dagger|Electronics,electronics|Engineering,engineering|Fixed Wing Aircraft,fixedwingaircraft|Foil,foil|Forgery,forgery|Forward Observer,forwardobserver|Gambling,gambling|Grav Belt,gravbelt|Ground Car,groundcar|Gunnery,gunnery|Halberd,halberd|Helicopter,helicopter|Hovercraft,hovercraft|Laser Carbine,lasercarbine|Laser Rifle,laserrifle|Leader,leader|Mechanical,mechanical|Medical,medical|Motor Boat,motorboat|Navigation,navigation|Pike,pike|Pilot,pilot|Revolver,revolver|Rifle,rifle|Sail Boat,sailboat|Ship's Boat,shipsboat|Shotgun,shotgun|Spear,spear|Steward,steward|Streetwise,streetwise|Submachinegun,submachinegun|Submersible,submersible|Sword,sword|Tactics,tactics|Vacc Suit,vaccsuit} ?{Attribute|Strength|Dexterity|Endurance|Intelligence|Education|Social}">Task Roll</button></td>
+    	    <td><button name="roll_task_fail" type="roll" value="!utp_fail @{character_id}">Task Fail</button></td>
+    	    <td><button name="roll_task_fail_hazardous" type="roll" value="!utp_fail @{character_id} 1">Hazardous Task Fail</button></td>
+	    </tr>
+    </table>
 	<h2>Armor</h2>
 	<select name="attr_armor">
 		<option value="Nothing" selected="selected">Nothing</option>
