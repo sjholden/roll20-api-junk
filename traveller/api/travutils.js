@@ -477,7 +477,7 @@ var TravUtils = TravUtils || (function() {
             }
             var addWeapon = "-";
             for (var i=0; i<additionalWeapons.length && addWeapon == "-"; i++) {
-                addWeapon = additionalWeapons[i][randomInteger(6)-1];
+               addWeapon = additionalWeapons[i][randomInteger(6)-1];
             }
             if (addWeapon != "") {
                 if (weapons != "") {
@@ -488,6 +488,70 @@ var TravUtils = TravUtils || (function() {
             sendChat("Random Person Encounter", "/w gm [[" + encounter[1] + "d6]] " + encounter[0] + vehicle + weapons);
         }
         
+    };
+
+    var UTP_Task = function(msg) {
+        var params = msg.content.split(" ");
+        var character = getObj("character", params[1]);
+        var skill = params[2].toLowerCase();
+        var attribute = params[3].toLowerCase();
+        
+        var rollText = [];
+
+        rollText.push("2d6");
+
+        if (getAttrByName(character.id, "trained_" + skill) != "1") {
+            if (getAttrByName(character.id, "trained_jackofalltrades") != "1") {
+                rollText.push(" - 5 [UNTRAINED in " + skill + "]");
+            } else {
+                rollText.push(" - 0 [JoT for " + skill + "]");
+            }
+        } else {
+            rollText.push(" + " + getAttrByName(character.id, "skill_" + skill) + " [" + skill + "]");
+        }
+        
+        rollText.push(" + " + Math.floor(Number(getAttrByName(character.id, attribute)) / 5).toString() + " ["+attribute+"]");
+        
+        sendChat(msg.who, "&{template:default} {{name=" + character.get('name') + " task check}} {{roll=[[" + rollText.join("") + " ]]}} {{}}");
+    };
+
+    var UTP_Failure = function(msg) {
+        var params = msg.content.split(" ");
+        var character = getObj("character", params[1]);
+        var hazardous = params[2];
+
+        var roll = randomInteger(6) + randomInteger(6);
+        if (hazardous == "1" || (hazardous && hazardous.toLowerCase() == "yes")) {
+            roll = roll + randomInteger(6);
+        }
+        
+        var message = "";
+        if (roll < 7) {
+            message = "May retry with no penalty";
+        } else if (roll < 11) {
+            var detroll = randomInteger(6) + randomInteger(6) + Math.floor(Number(getAttrByName(character.id, "intelligence")) / 5) + Math.floor(Number(getAttrByName(character.id, "education")) / 5);
+            if (detroll >= 11) {
+                message = "May retry with no penalty";
+            } else {
+                message = "May retry at higher difficulty or wait and retry with no penalty";
+            }
+        } else {
+            var mishap = randomInteger(6) + randomInteger(6);
+            if (roll >= 15) {
+                mishap = mishap + randomInteger(6);
+            }
+            if (mishap < 7) {
+                message = "Superficial(1D) mishap";
+            } else if (mishap < 11) {
+                message = "Minor(2D) mishap";
+            } else if (mishap < 15) {
+                message = "Major(3D) mishap";
+            } else {
+                message = "Destroyed(4D) mishap";
+            }
+        }
+        
+        sendChat(msg.who, "&{template:default} {{name=" + character.get('name') + " task failure}} {{roll=" + roll + "}} {{outcome=" + message + "}} {{}}");
     };
 
     var RegisterEvents = function() {
@@ -529,6 +593,10 @@ var TravUtils = TravUtils || (function() {
                 NpcReactions(msg);
             } else if (msg.content.indexOf("!random_person_encounter") != -1 ) {
                 RandomPersonEncounters(msg);
+            } else if (msg.content.indexOf("!utp_task") != -1) {
+                UTP_Task(msg);
+            } else if (msg.content.indexOf("!utp_fail") != -1) {
+                UTP_Failure(msg);
             }
         });        
     };
@@ -537,8 +605,6 @@ var TravUtils = TravUtils || (function() {
         CheckInstall: CheckInstall,
         RegisterEvents: RegisterEvents,
         loadInitialData: loadInitialData,
-        NpcReactions: NpcReactions,
-        RandomPersonEncounters: RandomPersonEncounters,
     };
 }());
 
