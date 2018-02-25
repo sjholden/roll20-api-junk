@@ -169,7 +169,7 @@ var TravUtils = TravUtils || (function() {
     
         var weapon = getAttrByName(attackerC.id, "currentweapon");
         var wounds = getAttrByName(attackerC.id, "Currentweapon_wounds");
-        var armormod = getAttrByName(defenderC.id, "armor_" + weapon.toLowerCase());
+        var armormod = getAttrByName(defenderC.id, "armor_" + weapon.replace(' ', '').toLowerCase());
         if (armormod == "") {
             armormod = "0";
         }
@@ -198,7 +198,7 @@ var TravUtils = TravUtils || (function() {
         if (rangemod == "no") {
             range = "Out of Range";
         }
-        var skill = weapon.toLowerCase();
+        var skill = weapon.replace(' ', '').toLowerCase();
         var skillmod = "0 [NO SKILL MOD]";
         if (skill != "claws" && skill != "teeth" && skill != "horns" && skill != "hooves" && skill != "stinger" && skill != "thrasher") {
             if (skill == "hands" || skill == "club") {
@@ -493,6 +493,9 @@ var TravUtils = TravUtils || (function() {
     var UTP_Task = function(msg) {
         var params = msg.content.split(" ");
         var character = getObj("character", params[1]);
+        if (! character) {
+            character = getObj("character", getObj("graphic", params[1]).get("represents"));
+        }
         var skill = params[2].toLowerCase();
         var attribute = params[3].toLowerCase();
         
@@ -518,6 +521,9 @@ var TravUtils = TravUtils || (function() {
     var UTP_Failure = function(msg) {
         var params = msg.content.split(" ");
         var character = getObj("character", params[1]);
+        if (! character) {
+            character = getObj("character", getObj("graphic", params[1]).get("represents"));
+        }
         var hazardous = params[2];
 
         var roll = randomInteger(6) + randomInteger(6);
@@ -553,6 +559,29 @@ var TravUtils = TravUtils || (function() {
         
         sendChat(msg.who, "&{template:default} {{name=" + character.get('name') + " task failure}} {{roll=" + roll + "}} {{outcome=" + message + "}} {{}}");
     };
+    
+    var LowRevivals = function(msg) {
+        var params = msg.content.split(" ");
+        var character = getObj("character", params[1]);
+        if (! character) {
+            character = getObj("character", getObj("graphic", params[1]).get("represents"));
+        }
+        var count = Number(params[2]);
+        var medbonus = "";
+        if (getAttrByName(character.id, "trained_medical") == "1" && Number(getAttrByName(character.id, "skill_medical")) >= 2) {
+            medbonus = "+1";
+        }
+        var rolls = [];
+        for (var i=0; i<count; i++) {
+            rolls.push("2d6" + medbonus);
+        }
+        if (rolls.length == 0) {
+            sendChat(msg.who, "Making 0 low revival rolls: 0 succeed, unsurprisingly");
+        } else {
+            sendChat(msg.who, "Making " + count.toString() + " low revival rolls: [[{" + rolls.join(",") + "}>5]] succeed");
+           
+        }
+    }
 
     var RegisterEvents = function() {
         on("change:graphic:bar1_value", function(obj, prev) {
@@ -597,6 +626,8 @@ var TravUtils = TravUtils || (function() {
                 UTP_Task(msg);
             } else if (msg.content.indexOf("!utp_fail") != -1) {
                 UTP_Failure(msg);
+            } else if (msg.content.indexOf("!low_revivals") != -1) {
+                LowRevivals(msg);
             }
         });        
     };
