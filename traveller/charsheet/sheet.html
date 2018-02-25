@@ -172,7 +172,7 @@
 <tr>
 	<td>Medical</td>
 	<td><input type="checkbox" class="sheet-trained-medical-switch" name="attr_trained_medical" value="1" /><input type="number" class="sheet-trained-medical-hide" name="attr_skill_medical" value="0" /></td>
-	<td><button name="roll_base_medical" type="roll" value="&{template:default} {{name= @{character_name} Base Medical roll}} {{roll= [[ 2d6+ ((@{skill_medical})*1)[SKILL]- ((1-@{trained_medical})*5)[NO EXPERTISE] ]]}}">Base Medical</button></td><td><button name="roll_lowrevive" type="roll" value="&{template:default} {{name= @{character_name} Medical Low Revival roll}} {{roll= [[ 2d6+ ({{@{skill_medical},0}>2}*1)[SKILL]- ((1-@{trained_medical})*5)[NO EXPERTISE] ]]}}">Medical Low Revival</button></td>
+	<td><button name="roll_base_medical" type="roll" value="&{template:default} {{name= @{character_name} Base Medical roll}} {{roll= [[ 2d6+ ((@{skill_medical})*1)[SKILL]- ((1-@{trained_medical})*5)[NO EXPERTISE] ]]}}">Base Medical</button></td><td><button name="roll_lowrevive" type="roll" value="!low_revivals @{character_id} ?{Number|1}">Medical Low Revival</button></td>
 </tr>
 
 <tr>
