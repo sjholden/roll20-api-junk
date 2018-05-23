@@ -7,14 +7,15 @@ on("ready",function(){
                 'version': 1.0,
                 'UTPs': {},
             };
-        }
-        state.travutils.UTPs["Determination"] = {name: "Determination",
+            state.travutils.UTPs["Determination"] = {name: "Determination",
                 difficulty: "Difficult",
                 skillstat1: "endurance",
                 skillstat2: "intelligence",
                 timenumber: "0",
                 timeunit: "",
                 hazardous: 0,
+                hidden: 0,
+            };
         }
     }
     
@@ -80,7 +81,7 @@ on("ready",function(){
         hovercraft: "Hovercraft",
         gravbelt: "Grav Belt",
     };
-    var AttrSkills = Object.assign({}, Attributes, Skills);
+    var AttrSkills = Object.assign({none:'None'}, Attributes, Skills);
     
 
     var systemsData = {};
@@ -841,23 +842,24 @@ on("ready",function(){
                 timenumber: params[5],
                 timeunit: params[6],
                 hazardous: Number(params[7]),
+                hidden: 0,
             }
             sendChat("UTP", "/w " + msg.who + "Created a UTP named " + name, null, {noarchive:true});
             UTP_List(msg);
         }
     };
     
-    var UTP_List = function(msg) {
+    var UTP_List = function(msg, hidden=0) {
         var isGm = playerIsGM(msg.playerid);
         var gmroll = "";
         if (isGm) {
             var skillList = _.map(Attributes, function(v,k) {return v+","+k;}).join("|") + "|" + _.map(Skills, function(v,k) {return v+","+k;}).join("|");
             gmroll = "{{[Create New](!travutil_utp_create &#63;{Name} &#63;{Difficulty|Simple|Routine|Difficult|Formidable} " +
-                "&#63;{Skill 1|" + skillList + "} &#63;{Skill 2|" + skillList + "} &#63;{Time Number|0} &#63;{Time Unit|Minutes} " +
+                "&#63;{Skill 1|None,none|" + skillList + "} &#63;{Skill 2|None,none|" + skillList + "} &#63;{Time Number|0} &#63;{Time Unit|Minutes} " +
                 "&#63;{Hazardous|Yes,1|No,0})=}} "
         }
-        sendChat("UTP", "/w " + msg.who + "&{template:default} {{name=Tasks}} " + gmroll + 
-            _.map(state.travutils.UTPs, function(t) {return "{{[" + t.name + "](!travutil_utp_show " + t.name + ")=}}";}).join(" "),
+        sendChat("UTP", "/w " + msg.who + "&{template:default} {{name=" + (hidden?"Hidden ":"") + "Tasks}} " + gmroll + 
+            _.map(_.where(state.travutils.UTPs, {hidden: hidden}), function(t) {return "{{[" + t.name + "](!travutil_utp_show " + t.name + ")=}}";}).join(" "),
             null, {noarchive:true});
     }
     
@@ -875,14 +877,33 @@ on("ready",function(){
             if (!isGm) {
                 rows.push("{{Action=[Roll](!travutil_utp_roll &#64;{selected|token_id} " + task.name + ")}}");
             } else {
-                rows.push("{{Action=[Roll](!travutil_utp_roll &#64;{selected|token_id} " + task.name + ") [Delete](!travutil_utp_delete " + task.name + ")}}");
+                rows.push("{{Hidden=" + (task.hidden?"Yes":"No") + "}}");
+                rows.push("{{Action=[Roll](!travutil_utp_roll &#64;{selected|token_id} " + task.name + ") " +
+                          "[Delete](!travutil_utp_delete " + task.name + ") " +
+                          "[Toggle Hide](!travutil_utp_toggle_hide " + task.name + ")}}");
             }
+            log(rows);
             sendChat("UTP", "/w " + msg.who + "&{template:default} {{name=UTP: " + task.name + "}}" + rows.join(" "),  null, {noarchive:true});
         } else {
             sendChat("UTP", "/w " + msg.who + "No UTP named " + name, null, {noarchive:true})
         }
         
     };
+    
+    var UTP_Toggle_Hide = function(msg) {
+        var params = msg.content.split(" ");
+        var name = params[1];
+        var isGm = playerIsGM(msg.playerid);
+        if (name in state.travutils.UTPs) {
+            if (isGm) {
+                state.travutils.UTPs[name].hidden = state.travutils.UTPs[name].hidden?0:1;
+                sendChat("UTP", "/w " + msg.who + "UTP Hidden Toggled: " + name, null, {noarchive:true});
+                UTP_List(msg, state.travutils.UTPs[name].hidden?0:1);
+            }
+        } else {
+            sendChat("UTP", "/w " + msg.who + "No UTP named " + name, null, {noarchive:true})
+        }        
+    }
 
     var UTP_Delete = function(msg) {
         var params = msg.content.split(" ");
@@ -917,7 +938,7 @@ on("ready",function(){
             var createMod = function(attrskill) {
                 if (attrskill in Attributes) {
                     return " + " + Math.floor(Number(getAttrByName(character.id, attrskill)) / 5).toString() + " ["+Attributes[attrskill]+"]";
-                } else {
+                } else if (attrskill in Skills) {
                     if (getAttrByName(character.id, "trained_" + attrskill) != "1") {
                         if (getAttrByName(character.id, "trained_jackofalltrades") != "1") {
                             return " - 4 [UNTRAINED in " + Skills[attrskill] + "]";
@@ -927,6 +948,8 @@ on("ready",function(){
                     } else {
                         return " + " + getAttrByName(character.id, "skill_" + attrskill) + " [" + Skills[attrskill] + "]";
                     }
+                } else {
+                    return "";
                 }
             };
             var speed = Number(params[3]);
@@ -1052,7 +1075,6 @@ on("ready",function(){
             if (isGm) {
                 buttons.push("[Ship Encounter](!travutil_starship_encounter " + system + ")");
                 buttons.push("[NPC Reaction](!travutil_npc_reaction &#63;{Mod +1 for 5 terms, bribery,admin|0} " + system + ")");
-                
             }
             log(buttons);
             return buttons.join(" ");
@@ -1084,6 +1106,7 @@ on("ready",function(){
         buttons.push("{{[First Blood](!travutil_first_blood &#64;{target|token_id} &#63;{Damage|0})=}}");
         buttons.push("{{[UTP List](!travutil_utp_list)=}}");
         if (isGm) {
+            buttons.push("{{[Hidden UTP List](!travutil_utp_list_hidden)=}}");
             buttons.push("{{[Random Person Encounter](!travutil_random_person_encounter)=}}");
         }
         sendChat("TravUtils", "\w " + msg.who + "&{template:default} {{name=Main Menu}} "+ buttons.join(" "), null, {noarchive:true});
@@ -1114,7 +1137,6 @@ on("ready",function(){
         });
         
         on("chat:message", function(msg) {
-            // Exit if not an api command
             if (msg.type != "api") {
                 UTP_Roll_Scanner(msg);
                 return;
@@ -1140,12 +1162,16 @@ on("ready",function(){
                 RandomPersonEncounters(msg);
             } else if (msg.content.indexOf("!travutil_utp_create") != -1) {
                 UTP_Create(msg);
+            } else if (msg.content.indexOf("!travutil_utp_list_hidden") != -1) {
+                UTP_List(msg, 1);
             } else if (msg.content.indexOf("!travutil_utp_list") != -1) {
                 UTP_List(msg);
             } else if (msg.content.indexOf("!travutil_utp_show") != -1) {
                 UTP_Show(msg);
             } else if (msg.content.indexOf("!travutil_utp_delete") != -1) {
                 UTP_Delete(msg);
+            } else if (msg.content.indexOf("!travutil_utp_toggle_hide") != -1) {
+                UTP_Toggle_Hide(msg);
             } else if (msg.content.indexOf("!travutil_utp_roll") != -1) {
                 UTP_Roll(msg);
             } else if (msg.content.indexOf("!low_revivals") != -1) {
